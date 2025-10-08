@@ -57,7 +57,7 @@ export default function Layout({ children }) {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-black/90 dark:bg-[#0a0a0a]/80 backdrop-blur-xl shadow-lg"
+            ? "bg-white/90 dark:bg-[#0a0a0a]/80 backdrop-blur-xl shadow-lg"
             : "bg-transparent"
         }`}
       >
@@ -66,7 +66,7 @@ export default function Layout({ children }) {
             {/* LOGO */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-2xl md:text-3xl font-bold tracking-tight text-white dark:text-[var(--cor-secundaria)] hover:text-[var(--cor-secundaria)] transition-colors"
+              className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-[var(--cor-secundaria)] hover:text-[var(--cor-secundaria)] transition-colors"
             >
               ERGOBIO
             </button>
@@ -77,7 +77,7 @@ export default function Layout({ children }) {
                 <motion.button
                   key={index}
                   onClick={link.onClick}
-                  className="text-white dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium"
+                  className="text-gray-700 dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium"
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -88,7 +88,7 @@ export default function Layout({ children }) {
               {/* BOTÃO DE TEMA COM ANIMAÇÃO */}
               <motion.button
                 onClick={toggleTheme}
-                className="relative flex items-center justify-center p-2 rounded-lg hover:bg-white/10 transition-colors"
+                className="relative flex items-center justify-center p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
                 whileTap={{ scale: 0.85, rotate: 90 }}
                 aria-label="Alternar tema"
               >
@@ -101,7 +101,7 @@ export default function Layout({ children }) {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <Sun className="w-5 h-5 text-yellow-300" />
+                      <Sun className="w-5 h-5 text-yellow-500" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -111,7 +111,7 @@ export default function Layout({ children }) {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <Moon className="w-5 h-5 text-gray-200" />
+                      <Moon className="w-5 h-5 text-gray-700" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -124,7 +124,7 @@ export default function Layout({ children }) {
               >
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-[var(--cor-primaria)] font-semibold transition-base"
+                  className="bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-white font-semibold transition-base"
                 >
                   Solicitar Proposta
                 </Button>
@@ -134,7 +134,7 @@ export default function Layout({ children }) {
             {/* BOTÃO MOBILE */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white dark:text-gray-200 p-2"
+              className="md:hidden text-gray-700 dark:text-gray-200 p-2"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -149,14 +149,14 @@ export default function Layout({ children }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="md:hidden bg-black/95 dark:bg-[#0a0a0a] border-t border-gray-800"
+              className="md:hidden bg-white/95 dark:bg-[#0a0a0a] border-t border-gray-300 dark:border-gray-800"
             >
               <div className="px-6 py-4 space-y-4">
                 {navLinks.map((link, index) => (
                   <motion.button
                     key={index}
                     onClick={link.onClick}
-                    className="block w-full text-left text-white dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium py-2"
+                    className="block w-full text-left text-gray-700 dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium py-2"
                     whileHover={{ scale: 1.05, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -167,7 +167,7 @@ export default function Layout({ children }) {
                 {/* Botão de tema no mobile */}
                 <button
                   onClick={toggleTheme}
-                  className="flex items-center gap-2 w-full text-left py-2 text-gray-200 hover:text-[var(--cor-secundaria)]"
+                  className="flex items-center gap-2 w-full text-left py-2 text-gray-700 dark:text-gray-200 hover:text-[var(--cor-secundaria)]"
                 >
                   {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                   {isDarkMode ? "Modo Claro" : "Modo Escuro"}
@@ -175,7 +175,7 @@ export default function Layout({ children }) {
 
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="w-full bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-[var(--cor-primaria)] font-semibold"
+                  className="w-full bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-white font-semibold"
                 >
                   Solicitar Proposta
                 </Button>
@@ -189,7 +189,7 @@ export default function Layout({ children }) {
       <main>{children}</main>
 
       {/* === FOOTER === */}
-      <footer className="bg-black text-white py-16 border-t border-gray-800 mt-24">
+      <footer className="bg-gray-900 text-white py-16 border-t border-gray-800 mt-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
           <div>
             <h3 className="text-3xl font-bold mb-3 text-cyan-400">ErgoBio</h3>
