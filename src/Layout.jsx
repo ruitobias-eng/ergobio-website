@@ -63,12 +63,16 @@ export default function Layout({ children }) {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* LOGO */}
+            {/* LOGO - Substituído para usar a imagem */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-[var(--cor-secundaria)] hover:text-[var(--cor-secundaria)] transition-colors"
+              className="transition-opacity hover:opacity-80"
             >
-              ERGOBIO
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e4284182bd0254fcd95261/439ee4039_logo0521.png"
+                alt="ErgoBio Logo"
+                className="h-10 md:h-12 w-auto"
+              />
             </button>
 
             {/* LINKS DESKTOP */}
