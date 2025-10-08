@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "@/components/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
 
   // Detecta o tema salvo ou preferência do sistema
   useEffect(() => {
@@ -45,10 +45,22 @@ export default function Layout({ children }) {
   };
 
   const navLinks = [
-    { label: "Início", onClick: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-    { label: "Serviços", onClick: () => scrollToSection("servicos") },
-    { label: "Sobre Nós", onClick: () => scrollToSection("sobre") },
-    { label: "Contato", onClick: () => scrollToSection("contato") },
+    { 
+      label: t("nav.home"), 
+      action: () => window.scrollTo({ top: 0, behavior: "smooth" }) 
+    },
+    { 
+      label: t("nav.services"), 
+      action: () => scrollToSection("servicos") 
+    },
+    { 
+      label: t("nav.about"), 
+      action: () => scrollToSection("sobre") 
+    },
+    { 
+      label: t("nav.contact"), 
+      action: () => scrollToSection("contato") 
+    },
   ];
 
   return (
@@ -63,13 +75,13 @@ export default function Layout({ children }) {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* LOGO - Substituído para usar a imagem */}
+            {/* LOGO */}
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="transition-opacity hover:opacity-80"
             >
               <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e4284182bd0254fcd95261/439ee4039_logo0521.png"
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e4284182bd0254fcd95261/22c42c785_logo_ok.jpeg"
                 alt="ErgoBio Logo"
                 className="h-10 md:h-12 w-auto"
               />
@@ -80,8 +92,8 @@ export default function Layout({ children }) {
               {navLinks.map((link, index) => (
                 <motion.button
                   key={index}
-                  onClick={link.onClick}
-                  className="text-gray-700 dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium"
+                  onClick={link.action}
+                  className="text-gray-700 dark:text-gray-200 hover:text-cyan-400 transition-colors font-medium"
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -89,7 +101,7 @@ export default function Layout({ children }) {
                 </motion.button>
               ))}
 
-              {/* BOTÃO DE TEMA COM ANIMAÇÃO */}
+              {/* BOTÃO DE TEMA */}
               <motion.button
                 onClick={toggleTheme}
                 className="relative flex items-center justify-center p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
@@ -121,6 +133,17 @@ export default function Layout({ children }) {
                 </AnimatePresence>
               </motion.button>
 
+              {/* SELETOR DE IDIOMA */}
+              <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+                className="bg-transparent border border-cyan-400 text-gray-700 dark:text-white rounded-md px-2 py-1 text-sm focus:outline-none"
+              >
+                <option value="pt-BR">🇧🇷 PT</option>
+                <option value="en">🇺🇸 EN</option>
+                <option value="es">🇪🇸 ES</option>
+              </select>
+
               {/* BOTÃO DE CONTATO */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -128,9 +151,9 @@ export default function Layout({ children }) {
               >
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-white font-semibold transition-base"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold"
                 >
-                  Solicitar Proposta
+                  {t("nav.proposal")}
                 </Button>
               </motion.div>
             </div>
@@ -159,8 +182,8 @@ export default function Layout({ children }) {
                 {navLinks.map((link, index) => (
                   <motion.button
                     key={index}
-                    onClick={link.onClick}
-                    className="block w-full text-left text-gray-700 dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium py-2"
+                    onClick={link.action}
+                    className="block w-full text-left text-gray-700 dark:text-gray-200 hover:text-cyan-400 transition-colors font-medium py-2"
                     whileHover={{ scale: 1.05, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -171,17 +194,28 @@ export default function Layout({ children }) {
                 {/* Botão de tema no mobile */}
                 <button
                   onClick={toggleTheme}
-                  className="flex items-center gap-2 w-full text-left py-2 text-gray-700 dark:text-gray-200 hover:text-[var(--cor-secundaria)]"
+                  className="flex items-center gap-2 w-full text-left py-2 text-gray-700 dark:text-gray-200 hover:text-cyan-400"
                 >
                   {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                  {isDarkMode ? "Modo Claro" : "Modo Escuro"}
+                  {isDarkMode ? t("theme.light") : t("theme.dark")}
                 </button>
+
+                {/* Seletor de idioma mobile */}
+                <select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="w-full bg-transparent border border-cyan-400 text-gray-700 dark:text-white rounded-md px-2 py-1 text-sm"
+                >
+                  <option value="pt-BR">🇧🇷 Português</option>
+                  <option value="en">🇺🇸 English</option>
+                  <option value="es">🇪🇸 Español</option>
+                </select>
 
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="w-full bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-white font-semibold"
+                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold"
                 >
-                  Solicitar Proposta
+                  {t("nav.proposal")}
                 </Button>
               </div>
             </motion.div>
@@ -190,7 +224,7 @@ export default function Layout({ children }) {
       </nav>
 
       {/* === CONTEÚDO PRINCIPAL === */}
-      <main>{children}</main>
+      <main className="pt-20">{children}</main>
 
       {/* === FOOTER === */}
       <footer className="bg-gray-900 text-white py-16 border-t border-gray-800 mt-24">
@@ -203,7 +237,7 @@ export default function Layout({ children }) {
           </div>
 
           <div>
-            <h4 className="text-xl font-semibold mb-4 text-cyan-400">Contato</h4>
+            <h4 className="text-xl font-semibold mb-4 text-cyan-400">{t("nav.contact")}</h4>
             <ul className="space-y-2 text-gray-400">
               <li>📞 (41) 9848-7876</li>
               <li>✉️ tatiana@ergobio.com.br</li>
@@ -212,18 +246,18 @@ export default function Layout({ children }) {
           </div>
 
           <div>
-            <h4 className="text-xl font-semibold mb-4 text-cyan-400">Links Rápidos</h4>
+            <h4 className="text-xl font-semibold mb-4 text-cyan-400">{t("footer.links")}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Início</button></li>
-              <li><button onClick={() => document.getElementById("servicos")?.scrollIntoView({ behavior: "smooth" })}>Serviços</button></li>
-              <li><button onClick={() => document.getElementById("sobre")?.scrollIntoView({ behavior: "smooth" })}>Sobre Nós</button></li>
-              <li><button onClick={() => document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })}>Contato</button></li>
+              <li><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-cyan-400 transition-colors">{t("nav.home")}</button></li>
+              <li><button onClick={() => scrollToSection("servicos")} className="hover:text-cyan-400 transition-colors">{t("nav.services")}</button></li>
+              <li><button onClick={() => scrollToSection("sobre")} className="hover:text-cyan-400 transition-colors">{t("nav.about")}</button></li>
+              <li><button onClick={() => scrollToSection("contato")} className="hover:text-cyan-400 transition-colors">{t("nav.contact")}</button></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
-          © 2025 ErgoBio. Todos os direitos reservados.
+          © 2025 ErgoBio. {t("footer.rights")}
         </div>
       </footer>
     </div>

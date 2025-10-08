@@ -5,11 +5,14 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(), // Isso deve funcionar com a versão mais recente do Tailwind
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/ergobio-website/',  // Defina o nome do seu repositório aqui
+  base: '/ergobio-website/',
 })
