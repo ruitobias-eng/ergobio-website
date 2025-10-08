@@ -93,7 +93,7 @@ export default function Layout({ children }) {
                 <motion.button
                   key={index}
                   onClick={link.action}
-                  className="text-gray-700 dark:text-gray-200 hover:text-cyan-400 transition-colors font-medium"
+                  className="text-gray-700 dark:text-gray-200 hover:text-cyan-400 transition-colors font-bold"
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -137,7 +137,7 @@ export default function Layout({ children }) {
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="bg-transparent border border-cyan-400 text-gray-700 dark:text-white rounded-md px-2 py-1 text-sm focus:outline-none"
+                className="bg-transparent border border-cyan-400 text-gray-700 dark:text-white rounded-md px-2 py-1 text-sm focus:outline-none font-bold"
               >
                 <option value="pt-BR">🇧🇷 PT</option>
                 <option value="en">🇺🇸 EN</option>
@@ -151,7 +151,7 @@ export default function Layout({ children }) {
               >
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold"
                 >
                   {t("nav.proposal")}
                 </Button>
@@ -183,7 +183,7 @@ export default function Layout({ children }) {
                   <motion.button
                     key={index}
                     onClick={link.action}
-                    className="block w-full text-left text-gray-700 dark:text-gray-200 hover:text-cyan-400 transition-colors font-medium py-2"
+                    className="block w-full text-left text-gray-700 dark:text-gray-200 hover:text-cyan-400 transition-colors font-bold py-2"
                     whileHover={{ scale: 1.05, y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -194,7 +194,7 @@ export default function Layout({ children }) {
                 {/* Botão de tema no mobile */}
                 <button
                   onClick={toggleTheme}
-                  className="flex items-center gap-2 w-full text-left py-2 text-gray-700 dark:text-gray-200 hover:text-cyan-400"
+                  className="flex items-center gap-2 w-full text-left py-2 text-gray-700 dark:text-gray-200 hover:text-cyan-400 font-bold"
                 >
                   {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                   {isDarkMode ? t("theme.light") : t("theme.dark")}
@@ -204,7 +204,7 @@ export default function Layout({ children }) {
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="w-full bg-transparent border border-cyan-400 text-gray-700 dark:text-white rounded-md px-2 py-1 text-sm"
+                  className="w-full bg-transparent border border-cyan-400 text-gray-700 dark:text-white rounded-md px-2 py-1 text-sm font-bold"
                 >
                   <option value="pt-BR">🇧🇷 Português</option>
                   <option value="en">🇺🇸 English</option>
@@ -213,7 +213,7 @@ export default function Layout({ children }) {
 
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold"
+                  className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold"
                 >
                   {t("nav.proposal")}
                 </Button>
