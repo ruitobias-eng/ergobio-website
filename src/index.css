@@ -1,0 +1,143 @@
+/* ===========================================================
+   🌐 ERGOBIO GLOBAL STYLES
+   Baseado em TailwindCSS + Shadcn/UI + Paleta Institucional
+   =========================================================== */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* === Variantes de tema === */
+@custom-variant dark (&:is(.dark *));
+
+/* === Tokens internos do Shadcn/UI === */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+/* ===========================================================
+   🎨 Tema Claro - Paleta Institucional ErgoBio
+   =========================================================== */
+:root {
+  --radius: 0.625rem;
+
+  /* Paleta ErgoBio */
+  --cor-primaria: #142d4c;
+  --cor-secundaria: #9fd3c7;
+  --cor-contraste: #f96d00;
+  --cor-texto: #385170;
+
+  /* Cores base OKLCH para o sistema */
+  --background: oklch(0.98 0.01 210);
+  --foreground: oklch(0.25 0.02 250);
+
+  /* Identidade principal */
+  --primary: var(--cor-primaria);
+  --primary-foreground: #ffffff;
+  --secondary: var(--cor-secundaria);
+  --secondary-foreground: var(--cor-primaria);
+  --accent: var(--cor-contraste);
+  --accent-foreground: #ffffff;
+
+  /* Tons auxiliares */
+  --muted: oklch(0.93 0.02 240);
+  --muted-foreground: oklch(0.45 0.02 240);
+  --border: oklch(0.9 0.01 240);
+  --ring: var(--cor-secundaria);
+}
+
+/* ===========================================================
+   🌙 Tema Escuro - Paleta Adaptada ErgoBio
+   =========================================================== */
+.dark {
+  --background: oklch(0.14 0.02 250);
+  --foreground: oklch(0.98 0.02 250);
+
+  --primary: #9fd3c7;
+  --primary-foreground: #142d4c;
+  --secondary: #142d4c;
+  --secondary-foreground: #9fd3c7;
+  --accent: #f96d00;
+  --accent-foreground: #ffffff;
+}
+
+/* ===========================================================
+   🧱 Camada Base
+   =========================================================== */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--cor-texto);
+  }
+
+  /* Suavização */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* ===========================================================
+   ✨ Extras visuais
+   =========================================================== */
+
+/* Transições suaves */
+button, a, .transition-base {
+  transition: all 0.25s ease-in-out;
+}
+
+/* Efeito de brilho sobre imagens */
+.glow-overlay {
+  background: linear-gradient(
+    45deg,
+    rgba(159, 211, 199, 0.15),
+    rgba(249, 109, 0, 0.1)
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Scrollbar personalizada (opcional) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cor-primaria);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-secundaria);
+}
