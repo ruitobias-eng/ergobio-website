@@ -74,13 +74,15 @@ export default function Layout({ children }) {
             {/* LINKS DESKTOP */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link, index) => (
-                <button
+                <motion.button
                   key={index}
                   onClick={link.onClick}
                   className="text-white dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  transition={{ duration: 0.2 }}
                 >
                   {link.label}
-                </button>
+                </motion.button>
               ))}
 
               {/* BOTÃO DE TEMA COM ANIMAÇÃO */}
@@ -116,12 +118,17 @@ export default function Layout({ children }) {
               </motion.button>
 
               {/* BOTÃO DE CONTATO */}
-              <Button
-                onClick={() => scrollToSection("contato")}
-                className="bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-[var(--cor-primaria)] font-semibold transition-base"
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ duration: 0.3 }}
               >
-                Solicitar Proposta
-              </Button>
+                <Button
+                  onClick={() => scrollToSection("contato")}
+                  className="bg-[var(--cor-secundaria)] hover:bg-[var(--cor-contraste)] text-[var(--cor-primaria)] font-semibold transition-base"
+                >
+                  Solicitar Proposta
+                </Button>
+              </motion.div>
             </div>
 
             {/* BOTÃO MOBILE */}
@@ -146,13 +153,15 @@ export default function Layout({ children }) {
             >
               <div className="px-6 py-4 space-y-4">
                 {navLinks.map((link, index) => (
-                  <button
+                  <motion.button
                     key={index}
                     onClick={link.onClick}
                     className="block w-full text-left text-white dark:text-gray-200 hover:text-[var(--cor-secundaria)] transition-colors font-medium py-2"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    transition={{ duration: 0.2 }}
                   >
                     {link.label}
-                  </button>
+                  </motion.button>
                 ))}
 
                 {/* Botão de tema no mobile */}
@@ -181,39 +190,38 @@ export default function Layout({ children }) {
 
       {/* === FOOTER === */}
       <footer className="bg-black text-white py-16 border-t border-gray-800 mt-24">
-  <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
-    <div>
-      <h3 className="text-3xl font-bold mb-3 text-cyan-400">ErgoBio</h3>
-      <p className="text-gray-400">
-        Ergonomia e Saúde Ocupacional para ambientes de trabalho mais humanos,
-        seguros e produtivos.
-      </p>
-    </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
+          <div>
+            <h3 className="text-3xl font-bold mb-3 text-cyan-400">ErgoBio</h3>
+            <p className="text-gray-400">
+              Ergonomia e Saúde Ocupacional para ambientes de trabalho mais humanos, seguros e produtivos.
+            </p>
+          </div>
 
-    <div>
-      <h4 className="text-xl font-semibold mb-4 text-cyan-400">Contato</h4>
-      <ul className="space-y-2 text-gray-400">
-        <li>📞 (11) 99999-9999</li>
-        <li>✉️ contato@ergobio.com.br</li>
-        <li>📍 São Paulo - SP</li>
-      </ul>
-    </div>
+          <div>
+            <h4 className="text-xl font-semibold mb-4 text-cyan-400">Contato</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>📞 (41) 9848-7876</li>
+              <li>✉️ tatiana@ergobio.com.br</li>
+              <li>📍 Curitiba - PR</li>
+            </ul>
+          </div>
 
-    <div>
-      <h4 className="text-xl font-semibold mb-4 text-cyan-400">Links Rápidos</h4>
-      <ul className="space-y-2 text-gray-400">
-        <li><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Início</button></li>
-        <li><button onClick={() => document.getElementById("servicos")?.scrollIntoView({ behavior: "smooth" })}>Serviços</button></li>
-        <li><button onClick={() => document.getElementById("sobre")?.scrollIntoView({ behavior: "smooth" })}>Sobre Nós</button></li>
-        <li><button onClick={() => document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })}>Contato</button></li>
-      </ul>
-    </div>
-  </div>
+          <div>
+            <h4 className="text-xl font-semibold mb-4 text-cyan-400">Links Rápidos</h4>
+            <ul className="space-y-2 text-gray-400">
+              <li><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Início</button></li>
+              <li><button onClick={() => document.getElementById("servicos")?.scrollIntoView({ behavior: "smooth" })}>Serviços</button></li>
+              <li><button onClick={() => document.getElementById("sobre")?.scrollIntoView({ behavior: "smooth" })}>Sobre Nós</button></li>
+              <li><button onClick={() => document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })}>Contato</button></li>
+            </ul>
+          </div>
+        </div>
 
-  <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
-    © 2025 ErgoBio. Todos os direitos reservados.
-  </div>
-</footer>
+        <div className="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+          © 2025 ErgoBio. Todos os direitos reservados.
+        </div>
+      </footer>
     </div>
   );
 }
