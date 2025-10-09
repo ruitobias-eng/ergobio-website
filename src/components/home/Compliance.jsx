@@ -46,12 +46,11 @@ export default function Compliance() {
 
   return (
     <section id="compliance" className="py-24 relative overflow-hidden">
-      {/* Background Gradient Adaptativo */}
-      {/* Mantido o gradiente de fundo por ter baixa opacidade. */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/30 dark:from-primary/20 dark:via-primary/10 dark:to-secondary/10" />
+      {/* Background Gradient Adaptativo - REMOVIDO FUNDO ESCURO NO TEMA CLARO */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 dark:from-primary/20 dark:via-primary/10 dark:to-secondary/10" />
       
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-20">
+      {/* Background Pattern - REDUZIDA OPACIDADE NO TEMA CLARO */}
+      <div className="absolute inset-0 opacity-5 dark:opacity-20">
         <div 
           className="absolute inset-0"
           style={{
@@ -61,9 +60,9 @@ export default function Compliance() {
         />
       </div>
 
-      {/* Floating Elements Adaptativos */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-foreground/5 dark:bg-foreground/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 dark:bg-secondary/10 rounded-full blur-3xl" />
+      {/* Floating Elements Adaptativos - REDUZIDA OPACIDADE NO TEMA CLARO */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-foreground/3 dark:bg-foreground/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 dark:bg-secondary/10 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -76,15 +75,15 @@ export default function Compliance() {
             className="relative"
           >
             {/* Main Image */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-background dark:border-background/80">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-gray-200 dark:border-gray-700">
               <img 
                 src={complianceImage}
                 alt="Conformidade Legal NR-17"
                 loading="lazy"
                 className="w-full h-auto"
               />
-              {/* Gradient Overlay Adaptativo */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent dark:from-primary/20 dark:to-transparent" />
+              {/* Gradient Overlay Adaptativo - REDUZIDA OPACIDADE NO TEMA CLARO */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent" />
             </div>
 
             {/* Floating Badge */}
@@ -93,7 +92,7 @@ export default function Compliance() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
-              className="absolute -top-4 -right-4 bg-gradient-to-r from-contraste to-orange-600 dark:from-contraste/80 dark:to-orange-500 text-white px-6 py-3 rounded-2xl shadow-2xl font-bold text-lg"
+              className="absolute -top-4 -right-4 bg-gradient-to-r from-contraste to-orange-600 dark:from-contraste/80 dark:to-orange-500 text-white px-6 py-3 rounded-2xl shadow-2xl font-bold text-lg border border-gray-800 dark:border-gray-200"
             >
               NR-17
             </motion.div>
@@ -104,12 +103,10 @@ export default function Compliance() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
               viewport={{ once: true }}
-              className="absolute -bottom-6 -left-6 bg-background/95 dark:bg-background/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-border"
+              className="absolute -bottom-6 -left-6 bg-background/95 dark:bg-background/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-gray-300 dark:border-gray-600"
             >
               <div className="text-center">
-                {/* Aumentado o contraste para o foreground principal */}
                 <div className="text-2xl font-bold text-foreground mb-1">100%</div>
-                {/* Aumentado o contraste do texto secundário no dark mode */}
                 <div className="text-sm text-muted-foreground dark:text-muted-foreground/90 font-medium">Conformidade</div>
                 <div className="text-xs text-muted-foreground dark:text-muted-foreground/90">Garantida</div>
               </div>
@@ -131,10 +128,9 @@ export default function Compliance() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/10 dark:bg-foreground/20 backdrop-blur-sm border border-foreground/20 dark:border-foreground/30"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/5 dark:bg-foreground/20 backdrop-blur-sm border border-gray-300 dark:border-gray-600"
               >
                 <FileText className="w-4 h-4 text-foreground dark:text-foreground/80" />
-                {/* Usando text-foreground sem /90 para melhor legibilidade no light mode */}
                 <span className="text-sm font-medium text-foreground dark:text-foreground/90">
                   Conformidade Legal
                 </span>
@@ -144,12 +140,10 @@ export default function Compliance() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                // Usando text-foreground sem /90 para melhor legibilidade em ambos os temas
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
               >
                 Conformidade{' '}
-                {/* A cor do texto foi ajustada para ter alto contraste no badge laranja do dark mode */}
-                <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
+                <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background border border-gray-800 dark:border-gray-200">
                   Legal
                 </span>{' '}
                 Garantida
@@ -172,15 +166,12 @@ export default function Compliance() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  // Aumentado a opacidade do background para garantir melhor contraste
-                  className="bg-card/70 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover:bg-card/90 dark:hover:bg-card/70 transition-all duration-300 group"
+                  className="bg-card/50 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-300 dark:border-gray-600 hover:bg-card/70 dark:hover:bg-card/70 transition-all duration-300 group"
                 >
-                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} mb-4 group-hover:scale-110 transition-transform duration-300 border border-gray-800 dark:border-gray-200`}>
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
-                  {/* Título com alto contraste */}
                   <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                  {/* Descrição com bom contraste em relação ao fundo do card */}
                   <p className="text-muted-foreground dark:text-muted-foreground/90 text-sm leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
@@ -192,10 +183,8 @@ export default function Compliance() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              // Aumentado a opacidade do background para garantir melhor contraste
-              className="bg-card/60 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-6 border border-border"
+              className="bg-card/40 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-300 dark:border-gray-600"
             >
-              {/* Título com alto contraste */}
               <h4 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-secondary dark:text-secondary/80" />
                 Serviços Incluídos:
@@ -203,8 +192,7 @@ export default function Compliance() {
               <div className="grid sm:grid-cols-2 gap-3">
                 {complianceItems.map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-secondary dark:bg-secondary/80 rounded-full" />
-                    {/* Texto do item da lista com bom contraste */}
+                    <div className="w-2 h-2 bg-secondary dark:bg-secondary/80 rounded-full border border-gray-800 dark:border-gray-200" />
                     <span className="text-foreground/90 dark:text-foreground/80 text-sm font-medium">{item}</span>
                   </div>
                 ))}

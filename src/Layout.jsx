@@ -14,6 +14,14 @@ export default function Layout({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
+  // Pattern pontilhado (adapta para claro/escuro)
+  const dotColor = isDarkMode ? 'rgba(255,255,255,0.08)' : 'rgba(56,81,112,0.16)';
+  const patternStyle = {
+    backgroundImage: `radial-gradient(${dotColor} 1px, transparent 1px)`,
+    backgroundSize: '18px 18px',
+    backgroundPosition: '0 0',
+  };
+
   // Detecta o tema salvo ou preferência do sistema
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -72,12 +80,19 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
+      {/* Pattern global pontilhado */}
+      <div
+        aria-hidden
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={patternStyle}
+      />
+
       {/* === NAVBAR === */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-background/95 dark:bg-background/90 backdrop-blur-xl shadow-lg dark:shadow-xl border-b border-border"
-            : "bg-transparent"
+            : "bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-border/50"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -249,29 +264,22 @@ export default function Layout({ children }) {
 
       {/* === FOOTER === */}
       <footer 
-        // ALTO CONTRASTE GARANTIDO
-        // Modo Claro: Fundo Cinza Claro (bg-muted) | Texto: Escuro (text-foreground)
-        // Modo Escuro: Fundo Escuro (dark:bg-background/90) | Texto: Branco Puro (dark:text-white)
         className="bg-muted dark:bg-background/90 text-foreground dark:text-white py-16 border-t border-border mt-24"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
           <div>
-            {/* Título com Gradiente: Garante destaque visual em ambos os fundos */}
             <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 bg-clip-text text-transparent">
               ErgoBio
             </h3>
-            {/* Texto Principal: Opacidade ajustada para manter a legibilidade em ambos os modos */}
             <p className="text-lg leading-relaxed opacity-90 dark:opacity-90">
               Ergonomia e Saúde Ocupacional para ambientes de trabalho mais humanos, seguros e produtivos.
             </p>
           </div>
 
           <div>
-            {/* Título de Contato: Usa Contraste para destaque */}
             <h4 className="text-xl font-bold mb-6 text-contraste dark:text-contraste/80">{t("nav.contact")}</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 font-medium">
-                {/* Ícones com cor de destaque */}
                 <span className="text-secondary dark:text-contraste">📞</span> (41) 9848-7876
               </li>
               <li className="flex items-center gap-3 font-medium">
@@ -284,14 +292,12 @@ export default function Layout({ children }) {
           </div>
 
           <div>
-            {/* Título Links Rápidos: Usa Contraste para destaque */}
             <h4 className="text-xl font-bold mb-6 text-contraste dark:text-contraste/80">Links Rápidos</h4>
             <ul className="space-y-3">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <button 
                     onClick={link.action}
-                    // Hover: Cor de destaque em ambos os temas
                     className="font-medium hover:text-secondary dark:hover:text-secondary transition-all duration-300 hover:translate-x-1 block"
                   >
                     {link.label}
@@ -302,7 +308,6 @@ export default function Layout({ children }) {
           </div>
         </div>
 
-        {/* Direitos Autorais: Borda de separação ajustada */}
         <div className="mt-12 border-t border-border dark:border-white/20 pt-6 text-center text-sm opacity-60">
           © 2025 ErgoBio. {t("footer.rights")}
         </div>

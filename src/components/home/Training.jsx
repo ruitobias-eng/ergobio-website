@@ -47,7 +47,7 @@ export default function Training() {
 
   return (
     <section id="treinamentos" className="py-24 bg-gradient-to-br from-muted/50 to-background dark:from-muted/20 dark:to-background/80 transition-colors relative overflow-hidden">
-      {/* Background Elements (Mantido) */}
+      {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/10 dark:bg-secondary/5 rounded-full blur-3xl" />
@@ -67,9 +67,8 @@ export default function Training() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 dark:border-secondary/30 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-gray-300 dark:border-gray-600 mb-6"
           >
-            {/* Removido /80 para contraste máximo no ícone */}
             <GraduationCap className="w-4 h-4 text-secondary dark:text-secondary" />
             <span className="text-sm font-medium text-foreground dark:text-foreground">
               Capacitação e Desenvolvimento
@@ -80,12 +79,10 @@ export default function Training() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            // Removido /90 para contraste máximo
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
           >
             Treinamentos e{' '}
-            {/* Ajuste de contraste para a palavra-chave no dark mode */}
-            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
+            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background border border-gray-800 dark:border-gray-200">
               Palestras
             </span>
           </motion.h2>
@@ -111,16 +108,12 @@ export default function Training() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              // Aumentado opacidade do background para contraste
-              className="text-center bg-card/70 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
+              className="text-center bg-card/70 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-300 dark:border-gray-600 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
             >
-              {/* Removido /80 do ícone */}
               <stat.icon className="w-8 h-8 mx-auto mb-3 text-secondary dark:text-secondary" />
-              {/* Removido /90 do texto principal */}
               <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">
                 {stat.number}
               </div>
-              {/* Aumentado opacidade do texto secundário */}
               <div className="text-sm text-foreground/80 dark:text-foreground/90 font-medium">
                 {stat.label}
               </div>
@@ -139,20 +132,17 @@ export default function Training() {
               viewport={{ once: true }}
               className="group"
             >
-              {/* Ajustado background e adicionado efeito de elevação no hover */}
-              <Card className="h-full border border-border bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-[1.02] group-hover:-translate-y-1">
+              <Card className="h-full border border-gray-300 dark:border-gray-600 bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-[1.02] group-hover:-translate-y-1">
                 <CardHeader className="pb-4">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`p-4 rounded-xl bg-gradient-to-r ${training.gradientLight} dark:${training.gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`p-4 rounded-xl bg-gradient-to-r ${training.gradientLight} dark:${training.gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300 border border-gray-800 dark:border-gray-200`}>
                       <training.icon className="w-8 h-8 text-white" />
                     </div>
                     <div className="flex-1">
-                      {/* Removido /90 do título */}
                       <h3 className="text-2xl font-bold text-foreground mb-2">
                         {training.title}
                       </h3>
                       <div className="flex flex-wrap gap-3">
-                        {/* Aumentado opacidade dos metadados */}
                         <div className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
                           <Clock className="w-4 h-4 text-secondary dark:text-secondary" />
                           {training.duration}
@@ -167,8 +157,6 @@ export default function Training() {
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  {/* Description */}
-                  {/* Aumentado opacidade da descrição */}
                   <p className="text-foreground/80 dark:text-foreground/90 leading-relaxed text-lg">
                     {training.description}
                   </p>
@@ -176,7 +164,6 @@ export default function Training() {
                   {/* Features & Benefits Grid */}
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      {/* Removido /90 e /80 para contraste máximo */}
                       <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4 text-secondary dark:text-secondary" />
                         Conteúdo Abordado:
@@ -184,7 +171,7 @@ export default function Training() {
                       <ul className="space-y-2">
                         {training.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
-                            <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full" />
+                            <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full border border-gray-800 dark:border-gray-200" />
                             {feature}
                           </li>
                         ))}
@@ -192,7 +179,6 @@ export default function Training() {
                     </div>
                     
                     <div>
-                      {/* Removido /90 e /80 para contraste máximo */}
                       <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
                         <Star className="w-4 h-4 text-contraste dark:text-contraste" />
                         Benefícios:
@@ -200,7 +186,7 @@ export default function Training() {
                       <ul className="space-y-2">
                         {training.benefits.map((benefit, idx) => (
                           <li key={idx} className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
-                            <div className="w-1.5 h-1.5 bg-contraste dark:bg-contraste rounded-full" />
+                            <div className="w-1.5 h-1.5 bg-contraste dark:bg-contraste rounded-full border border-gray-800 dark:border-gray-200" />
                             {benefit}
                           </li>
                         ))}
@@ -208,19 +194,18 @@ export default function Training() {
                     </div>
                   </div>
 
-                  {/* CTA Button - Cores ajustadas para usar o gradiente de cores principais */}
+                  {/* CTA Button */}
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    // Removido as opacidades /80 e /70 nos dark modes para garantir cores mais vibrantes e consistentes
-                    className="w-full py-3 px-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white font-semibold rounded-xl hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    className="w-full py-3 px-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white font-semibold rounded-xl hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-gray-800 dark:border-gray-200"
                   >
                     Solicitar Orçamento
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </motion.button>
                 </CardContent>
 
-                {/* Hover Border Effect (Mantido) */}
+                {/* Hover Border Effect */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${training.gradientLight} dark:${training.gradientDark} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
               </Card>
             </motion.div>
@@ -235,13 +220,10 @@ export default function Training() {
           viewport={{ once: true }}
           className="text-center"
         >
-          {/* Ajustado opacidade do background para contraste */}
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/15 dark:to-secondary/15 rounded-3xl p-8 border border-border">
-            {/* Removido /90 do título */}
+          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/15 dark:to-secondary/15 rounded-3xl p-8 border border-gray-300 dark:border-gray-600">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Programas Customizados para sua Empresa
             </h3>
-            {/* Aumentado opacidade do texto */}
             <p className="text-foreground/80 dark:text-foreground/90 mb-6 max-w-2xl mx-auto">
               Desenvolvemos treinamentos e palestras sob medida para as necessidades específicas 
               do seu negócio, com conteúdo relevante e aplicação prática imediata.
@@ -250,16 +232,14 @@ export default function Training() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                // Botão principal com gradiente ajustado
-                className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 border border-gray-800 dark:border-gray-200"
               >
                 Agendar Diagnóstico Gratuito
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                // Botão secundário ajustado para maior contraste no dark mode
-                className="border-2 border-secondary dark:border-secondary text-secondary dark:text-secondary px-8 py-4 rounded-xl font-semibold hover:bg-secondary/5 dark:hover:bg-secondary/10 transition-all duration-300"
+                className="border-2 border-secondary dark:border-secondary text-secondary dark:text-secondary px-8 py-4 rounded-xl font-semibold hover:bg-secondary/5 dark:hover:bg-secondary/10 transition-all duration-300 border-gray-800 dark:border-gray-200"
               >
                 Ver Conteúdo Programático
               </motion.button>

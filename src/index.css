@@ -1,11 +1,11 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
 /* ===========================================================
    🌐 ERGOBIO GLOBAL STYLES - MODERNIZED
    Baseado em TailwindCSS + Shadcn/UI + Paleta Institucional
    Design System Adaptativo para Tema Claro e Escuro
    =========================================================== */
-
-@import "tailwindcss";
-@import "tw-animate-css";
 
 /* === Variantes de tema === */
 @custom-variant dark (&:is(.dark *));
@@ -45,27 +45,27 @@
 
 /* ===========================================================
    🌐 ERGOBIO DESIGN SYSTEM – VISIBILIDADE APRIMORADA
-   Tema Claro → texto escuro e contrastante
-   Tema Escuro → texto claro e confortável
+   Tema Claro → texto escuro e contrastante (baseado no logo)
+   Tema Escuro → texto claro e confortável (baseado no logo)
    =========================================================== */
 
 /* === Tema Claro === */
 :root {
   --radius: 0.625rem;
 
-  /* Paleta principal */
-  --cor-primaria: #1a365d;       /* Azul mais escuro, leitura forte */
-  --cor-secundaria: #2b8a78;     /* Verde médio mais saturado */
-  --cor-contraste: #ff6b00;      /* Laranja vivo */
-  --cor-texto: #1e293b;          /* Azul-acinzentado escuro (ótimo contraste) */
+  /* Paleta principal ajustada ao logo: Dark Charcoal, Teal, Laranja */
+  --cor-primaria: #343A40;       /* Dark Charcoal (Texto do logo) */
+  --cor-secundaria: #00A79D;     /* Teal Profissional (Novo Secundário) */
+  --cor-contraste: #ff6b00;      /* Laranja Vivo (Acento do logo) */
+  --cor-texto: #343A40;          /* Texto principal */
 
   /* Fundo e superfície */
   --background: #f8fafc;         /* Quase branco (leve tom frio) */
-  --foreground: #0f172a;         /* Texto principal */
+  --foreground: #343A40;         /* Texto principal (Dark Charcoal) */
   --card: #ffffff;
-  --card-foreground: #1e293b;
+  --card-foreground: #343A40;
   --popover: #ffffff;
-  --popover-foreground: #1e293b;
+  --popover-foreground: #343A40;
 
   /* Elementos */
   --primary: var(--cor-primaria);
@@ -82,18 +82,19 @@
   --ring: var(--cor-secundaria);
 
   /* Gráficos */
-  --chart-1: #2563eb; /* azul */
-  --chart-2: #16a34a; /* verde */
-  --chart-3: #f97316; /* laranja */
-  --chart-4: #9333ea; /* roxo */
-  --chart-5: #e11d48; /* rosa avermelhado */
+  --chart-1: #2563eb; 
+  --chart-2: #16a34a; 
+  --chart-3: #f97316; 
+  --chart-4: #9333ea; 
+  --chart-5: #e11d48; 
 }
 
 /* === Tema Escuro === */
 .dark {
-  --cor-primaria: #67e8f9;       /* Azul-ciano claro */
-  --cor-secundaria: #00bfa5;     /* Verde-água vivo */
-  --cor-contraste: #ffa94d;      /* Laranja suave */
+  /* Paleta principal ajustada ao logo: Light Slate, Bright Teal, Laranja Suave */
+  --cor-primaria: #AAB8C2;       /* Light Slate (Light Primary) */
+  --cor-secundaria: #00D4C7;     /* Bright Teal (Bright Secondary) */
+  --cor-contraste: #FF984C;      /* Laranja Suave (Acento do logo) */
   --cor-texto: #e2e8f0;          /* Texto claro e suave */
 
   --background: #0f172a;         /* Azul marinho profundo */
@@ -103,6 +104,7 @@
   --popover: #1e293b;
   --popover-foreground: #f8fafc;
 
+  /* Elementos */
   --primary: var(--cor-primaria);
   --primary-foreground: #0f172a;
   --secondary: var(--cor-secundaria);
@@ -180,18 +182,22 @@
   }
 
   .gradient-primary {
-    background: linear-gradient(135deg, var(--cor-primaria) 0%, #1e3a5f 100%);
+    /* Gradiente Dark Charcoal */
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, #4c5563 100%); 
   }
 
   .gradient-secondary {
-    background: linear-gradient(135deg, var(--cor-secundaria) 0%, #b4e4d9 100%);
+    /* Gradiente Teal */
+    background: linear-gradient(135deg, var(--cor-secundaria) 0%, #5dccb7 100%);
   }
 
   .gradient-accent {
+    /* Gradiente Laranja */
     background: linear-gradient(135deg, var(--cor-contraste) 0%, #ff9a62 100%);
   }
 
   .gradient-text {
+    /* Combinação Secondary/Accent */
     background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-contraste) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -201,9 +207,9 @@
   .glow-overlay {
     background: linear-gradient(
       45deg,
-      rgba(159, 211, 199, 0.15) 0%,
-      rgba(249, 109, 0, 0.1) 50%,
-      rgba(20, 45, 76, 0.05) 100%
+      rgba(0, 167, 157, 0.15) 0%, /* Teal */
+      rgba(255, 107, 0, 0.1) 50%, /* Laranja */
+      rgba(52, 58, 64, 0.05) 100% /* Dark Charcoal */
     );
     mix-blend-mode: overlay;
   }
@@ -229,6 +235,29 @@
            hover:shadow-lg transition-all duration-300 transform hover:scale-105
            focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
   }
+
+ /* ===== Background Pontinhos Responsivo ===== */
+.background-dots {
+    /* TEMA CLARO: Sutil, baseado na borda */
+    --dot-color: var(--border);
+    --dot-size: 14px; /* Aumentado de 12px para 14px */
+    --dot-spacing: 38px; /* Aumentado de 36px para 38px */
+
+    background-image: radial-gradient(circle, var(--dot-color) var(--dot-size), transparent var(--dot-size));
+    background-size: var(--dot-spacing) var(--dot-spacing);
+  }
+
+  .dark .background-dots {
+    /* TEMA ESCURO: Destaque, usando o Teal */
+    --dot-color: var(--cor-secundaria);
+  }
+
+  @media (max-width: 768px) {
+    .background-dots {
+      --dot-size: 2px;
+      --dot-spacing: 12px;
+    }
+  }
 }
 
 /* ===========================================================
@@ -246,8 +275,9 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(159, 211, 199, 0.3); }
-    50% { box-shadow: 0 0 30px rgba(159, 211, 199, 0.6); }
+    /* Ajustado para usar o Secondary Teal */
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 167, 157, 0.3); } 
+    50% { box-shadow: 0 0 30px rgba(0, 167, 157, 0.6); }
   }
 
   .animate-fade-in-up { animation: fade-in-up 0.6s ease-out; }

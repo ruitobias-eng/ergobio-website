@@ -17,7 +17,6 @@ export default function Contact() {
     const formData = new FormData(e.target);
     
     try {
-      // Nota: A URL do Formspree deve ser segura. Mantida a URL original.
       const response = await fetch("https://formspree.io/f/mjkvwzlo", {
         method: "POST",
         body: formData,
@@ -71,13 +70,11 @@ export default function Contact() {
     }
   ];
 
-  // Variantes para a animação do header
   const headerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
   
-  // Variantes para a animação do badge
   const badgeVariants = {
     hidden: { opacity: 0, scale: 0 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
@@ -105,7 +102,7 @@ export default function Contact() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 dark:border-secondary/30 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-gray-300 dark:border-gray-600 mb-6"
           >
             <MessageCircle className="w-4 h-4 text-secondary dark:text-secondary" />
             <span className="text-sm font-medium text-foreground">
@@ -119,15 +116,12 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
           >
-            {/* Removido /90 de text-foreground para contraste máximo no dark mode */}
             <span className="text-foreground">Entre em </span>{' '}
-            {/* Ajustada a cor do texto para background no contraste para legibilidade */}
-            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
+            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background border border-gray-800 dark:border-gray-200">
               Contato
             </span>
           </motion.h2>
           
-          {/* Aumentada a opacidade para um tom de texto um pouco mais forte */}
           <p className="text-xl md:text-2xl text-foreground/80 dark:text-foreground/90 max-w-3xl mx-auto leading-relaxed">
             Estamos prontos para ajudar sua empresa a alcançar um ambiente de trabalho 
             mais <strong className="text-foreground">saudável, seguro e produtivo</strong>.
@@ -152,22 +146,19 @@ export default function Contact() {
                 viewport={{ once: true }}
                 className="group"
               >
-                {/* Adicionada a classe translate-y-0 e hover:-translate-y-1 para o efeito de elevação */}
-                <Card className="border border-border bg-card/60 dark:bg-card/40 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                <Card className="border border-gray-300 dark:border-gray-600 bg-card/60 dark:bg-card/40 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300 border border-gray-800 dark:border-gray-200`}>
                         <item.icon className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        {/* Removido /90 dos textos principais para contraste máximo */}
                         <h3 className="font-semibold text-lg text-foreground mb-1">
                           {item.title}
                         </h3>
                         <p className="text-foreground font-medium text-lg mb-1">
                           {item.content}
                         </p>
-                        {/* Ajustada a opacidade para melhor contraste no dark mode */}
                         <p className="text-muted-foreground dark:text-muted-foreground/90 text-sm">
                           {item.description}
                         </p>
@@ -184,7 +175,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/10 dark:to-secondary/10 rounded-2xl p-6 border border-border"
+              className="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/10 dark:to-secondary/10 rounded-2xl p-6 border border-gray-300 dark:border-gray-600"
             >
               <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-secondary dark:text-secondary" />
@@ -192,15 +183,15 @@ export default function Contact() {
               </h4>
               <ul className="space-y-2 text-sm text-foreground/80 dark:text-foreground/90">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0 border border-gray-800 dark:border-gray-200" />
                   Consultoria especializada em NR-17
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0 border border-gray-800 dark:border-gray-200" />
                   Resposta rápida e personalizada
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0 border border-gray-800 dark:border-gray-200" />
                   Soluções práticas e eficientes
                 </li>
               </ul>
@@ -214,15 +205,12 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* Aumentada a opacidade do card para melhor legibilidade do form */}
-            <Card className="border border-border shadow-2xl dark:shadow-xl bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5 border-b border-border">
-                {/* Removido /90 do título */}
+            <Card className="border border-gray-300 dark:border-gray-600 shadow-2xl dark:shadow-xl bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5 border-b border-gray-300 dark:border-gray-600">
                 <CardTitle className="text-2xl text-foreground flex items-center gap-2">
                   <Send className="w-6 h-6 text-secondary dark:text-secondary" />
                   Envie sua Mensagem
                 </CardTitle>
-                {/* Aumentada a opacidade da descrição */}
                 <p className="text-foreground/80 dark:text-foreground/90 mt-2">
                   Preencha o formulário abaixo e entraremos em contato o mais breve possível.
                 </p>
@@ -230,7 +218,6 @@ export default function Contact() {
               
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Campos de formulário - Melhorado o foco com classe de cor principal */}
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-foreground font-medium">
                       Nome Completo *
@@ -240,7 +227,7 @@ export default function Contact() {
                       name="name"
                       required
                       placeholder="Seu nome completo"
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors"
+                      className="bg-background dark:bg-background/80 border-gray-300 dark:border-gray-600 focus:border-secondary dark:focus:border-secondary transition-colors"
                     />
                   </div>
 
@@ -254,7 +241,7 @@ export default function Contact() {
                       type="email"
                       required
                       placeholder="seu@email.com"
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors"
+                      className="bg-background dark:bg-background/80 border-gray-300 dark:border-gray-600 focus:border-secondary dark:focus:border-secondary transition-colors"
                     />
                   </div>
 
@@ -266,7 +253,7 @@ export default function Contact() {
                       id="company"
                       name="company"
                       placeholder="Sua empresa (opcional)"
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors"
+                      className="bg-background dark:bg-background/80 border-gray-300 dark:border-gray-600 focus:border-secondary dark:focus:border-secondary transition-colors"
                     />
                   </div>
 
@@ -280,15 +267,14 @@ export default function Contact() {
                       required
                       placeholder="Conte-nos como podemos ajudar sua empresa..."
                       rows={5}
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors resize-none"
+                      className="bg-background dark:bg-background/80 border-gray-300 dark:border-gray-600 focus:border-secondary dark:focus:border-secondary transition-colors resize-none"
                     />
                   </div>
 
-                  {/* Botão de Envio - Reforçado o hover e o estado de sending */}
                   <Button
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full py-6 text-lg font-semibold bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:opacity-90 transition-all duration-300 disabled:opacity-70 disabled:pointer-events-none"
+                    className="w-full py-6 text-lg font-semibold bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:opacity-90 transition-all duration-300 disabled:opacity-70 disabled:pointer-events-none border border-gray-800 dark:border-gray-200"
                     size="lg"
                   >
                     {status === "sending" ? (
@@ -304,7 +290,6 @@ export default function Contact() {
                     )}
                   </Button>
 
-                  {/* Status Messages - Cores mantidas e contraste garantido */}
                   <div className="min-h-[3rem]">
                     {status === "success" && (
                       <motion.div

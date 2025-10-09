@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import tailwindcssAnimate from "tailwindcss-animate"
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -49,6 +49,12 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        pattern: `
+          radial-gradient(circle at 25% 25%, oklch(var(--secondary)) 2px, transparent 0),
+          radial-gradient(circle at 75% 75%, oklch(var(--primary)) 1px, transparent 0)
+        `,
       },
     },
   },
