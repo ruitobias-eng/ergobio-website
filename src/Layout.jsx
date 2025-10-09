@@ -264,41 +264,47 @@ export default function Layout({ children }) {
 
       {/* === FOOTER === */}
       <footer 
-        className="bg-muted dark:bg-background/90 text-foreground dark:text-white py-16 border-t border-border mt-24"
+        className="bg-muted dark:bg-background/90 text-foreground py-16 border-t border-border mt-24"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
+          {/* Brand Section */}
           <div>
             <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 bg-clip-text text-transparent">
               ErgoBio
             </h3>
-            <p className="text-lg leading-relaxed opacity-90 dark:opacity-90">
+            <p className="text-lg leading-relaxed text-muted-foreground dark:text-muted-foreground/90">
               Ergonomia e Saúde Ocupacional para ambientes de trabalho mais humanos, seguros e produtivos.
             </p>
           </div>
 
+          {/* Contact Section */}
           <div>
-            <h4 className="text-xl font-bold mb-6 text-contraste dark:text-contraste/80">{t("nav.contact")}</h4>
+            <h4 className="text-xl font-bold mb-6 text-foreground dark:text-foreground">Contato</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 font-medium">
-                <span className="text-secondary dark:text-contraste">📞</span> (41) 9848-7876
+              <li className="flex items-center gap-3">
+                <span className="text-secondary dark:text-secondary">📞</span>
+                <span className="text-foreground dark:text-foreground/90 font-medium">(41) 9848-7876</span>
               </li>
-              <li className="flex items-center gap-3 font-medium">
-                <span className="text-secondary dark:text-contraste">✉️</span> tatiana@ergobio.com.br
+              <li className="flex items-center gap-3">
+                <span className="text-secondary dark:text-secondary">✉️</span>
+                <span className="text-foreground dark:text-foreground/90 font-medium">tatiana@ergobio.com.br</span>
               </li>
-              <li className="flex items-center gap-3 font-medium">
-                <span className="text-secondary dark:text-contraste">📍</span> Curitiba - PR
+              <li className="flex items-center gap-3">
+                <span className="text-secondary dark:text-secondary">📍</span>
+                <span className="text-foreground dark:text-foreground/90 font-medium">Curitiba - PR</span>
               </li>
             </ul>
           </div>
 
+          {/* Quick Links Section */}
           <div>
-            <h4 className="text-xl font-bold mb-6 text-contraste dark:text-contraste/80">Links Rápidos</h4>
+            <h4 className="text-xl font-bold mb-6 text-foreground dark:text-foreground">Links Rápidos</h4>
             <ul className="space-y-3">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <button 
                     onClick={link.action}
-                    className="font-medium hover:text-secondary dark:hover:text-secondary transition-all duration-300 hover:translate-x-1 block"
+                    className="text-foreground/80 dark:text-foreground/80 hover:text-secondary dark:hover:text-secondary transition-all duration-300 hover:translate-x-1 block font-medium"
                   >
                     {link.label}
                   </button>
@@ -308,8 +314,11 @@ export default function Layout({ children }) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border dark:border-white/20 pt-6 text-center text-sm opacity-60">
-          © 2025 ErgoBio. {t("footer.rights")}
+        {/* Copyright Section */}
+        <div className="mt-12 border-t border-border dark:border-border pt-6 text-center">
+          <span className="text-sm text-muted-foreground dark:text-muted-foreground">
+            © 2025 ErgoBio. Todos os direitos reservados.
+          </span>
         </div>
       </footer>
     </div>
