@@ -76,7 +76,7 @@ export default function Layout({ children }) {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-800/50"
+            ? "bg-background/95 backdrop-blur-xl shadow-lg border-b border-border"
             : "bg-transparent"
         }`}
       >
@@ -100,7 +100,7 @@ export default function Layout({ children }) {
                 <motion.button
                   key={index}
                   onClick={link.action}
-                  className="text-gray-800 dark:text-gray-100 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all font-semibold text-[15px] tracking-wide"
+                  className="text-foreground hover:text-secondary transition-all font-semibold text-[15px] tracking-wide"
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -111,7 +111,7 @@ export default function Layout({ children }) {
               {/* BOTÃO DE TEMA */}
               <motion.button
                 onClick={toggleTheme}
-                className="relative flex items-center justify-center p-2 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 shadow-sm"
+                className="relative flex items-center justify-center p-2 rounded-xl bg-muted hover:bg-muted/80 transition-all duration-300 shadow-sm"
                 whileTap={{ scale: 0.85, rotate: 90 }}
                 aria-label="Alternar tema"
               >
@@ -124,7 +124,7 @@ export default function Layout({ children }) {
                       exit={{ rotate: 90, opacity: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <Sun className="w-5 h-5 text-yellow-500" />
+                      <Sun className="w-5 h-5 text-amber-500" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -134,7 +134,7 @@ export default function Layout({ children }) {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <Moon className="w-5 h-5 text-indigo-600" />
+                      <Moon className="w-5 h-5 text-primary" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -145,7 +145,7 @@ export default function Layout({ children }) {
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="bg-white/80 dark:bg-gray-800/80 border border-cyan-400/50 text-gray-800 dark:text-white rounded-xl px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-400/30 backdrop-blur-sm transition-all duration-300"
+                  className="bg-card border border-secondary/50 text-foreground rounded-xl px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-secondary/30 backdrop-blur-sm transition-all duration-300"
                 >
                   <option value="pt-BR">🇧🇷 PT</option>
                   <option value="en">🇺🇸 EN</option>
@@ -160,7 +160,7 @@ export default function Layout({ children }) {
               >
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 px-6 py-2 rounded-xl"
+                  className="bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl transition-all duration-300 px-6 py-2 rounded-xl"
                 >
                   {t("nav.proposal")}
                 </Button>
@@ -170,7 +170,7 @@ export default function Layout({ children }) {
             {/* BOTÃO MOBILE */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-gray-800 dark:text-gray-200 p-2 bg-white/80 dark:bg-gray-800/80 rounded-xl backdrop-blur-sm"
+              className="md:hidden text-foreground p-2 bg-card/80 rounded-xl backdrop-blur-sm border border-border"
               whileTap={{ scale: 0.9 }}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -186,14 +186,14 @@ export default function Layout({ children }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="md:hidden bg-white/95 dark:bg-[#0a0a0a]/95 border-t border-gray-200/50 dark:border-gray-800/50 backdrop-blur-xl"
+              className="md:hidden bg-background/95 border-t border-border backdrop-blur-xl"
             >
               <div className="px-6 py-6 space-y-4">
                 {navLinks.map((link, index) => (
                   <motion.button
                     key={index}
                     onClick={link.action}
-                    className="block w-full text-left text-gray-800 dark:text-gray-100 hover:text-cyan-500 dark:hover:text-cyan-400 transition-all font-semibold py-3 text-lg border-b border-gray-100 dark:border-gray-800 last:border-b-0"
+                    className="block w-full text-left text-foreground hover:text-secondary transition-all font-semibold py-3 text-lg border-b border-border last:border-b-0"
                     whileHover={{ scale: 1.02, x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -205,7 +205,7 @@ export default function Layout({ children }) {
                   {/* Botão de tema no mobile */}
                   <motion.button
                     onClick={toggleTheme}
-                    className="flex items-center justify-center gap-2 flex-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-xl py-3 font-semibold transition-all hover:bg-gray-200 dark:hover:bg-gray-700"
+                    className="flex items-center justify-center gap-2 flex-1 bg-muted text-foreground rounded-xl py-3 font-semibold transition-all hover:bg-muted/80 border border-border"
                     whileHover={{ scale: 1.02 }}
                   >
                     {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -217,7 +217,7 @@ export default function Layout({ children }) {
                     <select
                       value={language}
                       onChange={(e) => setLanguage(e.target.value)}
-                      className="w-full bg-gray-100 dark:bg-gray-800 border border-cyan-400/50 text-gray-800 dark:text-white rounded-xl px-3 py-3 text-sm font-semibold"
+                      className="w-full bg-card border border-secondary/50 text-foreground rounded-xl px-3 py-3 text-sm font-semibold"
                     >
                       <option value="pt-BR">🇧🇷 PT</option>
                       <option value="en">🇺🇸 EN</option>
@@ -229,7 +229,7 @@ export default function Layout({ children }) {
                 <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                   <Button
                     onClick={() => scrollToSection("contato")}
-                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 rounded-xl mt-4 shadow-lg"
+                    className="w-full bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-primary-foreground font-bold py-3 rounded-xl mt-4 shadow-lg"
                   >
                     {t("nav.proposal")}
                   </Button>
@@ -244,40 +244,40 @@ export default function Layout({ children }) {
       <main className="pt-20">{children}</main>
 
       {/* === FOOTER === */}
-      <footer className="bg-gradient-to-br from-gray-900 to-black text-white py-16 border-t border-gray-800 mt-24">
+      <footer className="bg-gradient-to-br from-primary to-primary/90 text-primary-foreground py-16 border-t border-border mt-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
           <div>
-            <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
               ErgoBio
             </h3>
-            <p className="text-gray-400 text-lg leading-relaxed">
+            <p className="text-primary-foreground/80 text-lg leading-relaxed">
               Ergonomia e Saúde Ocupacional para ambientes de trabalho mais humanos, seguros e produtivos.
             </p>
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-6 text-cyan-400">{t("nav.contact")}</h4>
-            <ul className="space-y-3 text-gray-400">
+            <h4 className="text-xl font-bold mb-6 text-secondary">{t("nav.contact")}</h4>
+            <ul className="space-y-3 text-primary-foreground/80">
               <li className="flex items-center gap-3 font-medium">
-                <span className="text-cyan-400">📞</span> (41) 9848-7876
+                <span className="text-secondary">📞</span> (41) 9848-7876
               </li>
               <li className="flex items-center gap-3 font-medium">
-                <span className="text-cyan-400">✉️</span> tatiana@ergobio.com.br
+                <span className="text-secondary">✉️</span> tatiana@ergobio.com.br
               </li>
               <li className="flex items-center gap-3 font-medium">
-                <span className="text-cyan-400">📍</span> Curitiba - PR
+                <span className="text-secondary">📍</span> Curitiba - PR
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-6 text-cyan-400">Links Rápidos</h4>
-            <ul className="space-y-3 text-gray-400">
+            <h4 className="text-xl font-bold mb-6 text-secondary">Links Rápidos</h4>
+            <ul className="space-y-3 text-primary-foreground/80">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <button 
                     onClick={link.action}
-                    className="font-medium hover:text-cyan-400 transition-all duration-300 hover:translate-x-1 block"
+                    className="font-medium hover:text-secondary transition-all duration-300 hover:translate-x-1 block"
                   >
                     {link.label}
                   </button>
@@ -287,7 +287,7 @@ export default function Layout({ children }) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+        <div className="mt-12 border-t border-primary-foreground/20 pt-6 text-center text-primary-foreground/60 text-sm">
           © 2025 ErgoBio. {t("footer.rights")}
         </div>
       </footer>
