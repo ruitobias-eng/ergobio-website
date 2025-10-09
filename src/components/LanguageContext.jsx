@@ -6,6 +6,7 @@ const translations = {
     nav: {
       home: "Início",
       services: "Serviços",
+      training: "Treinamentos", 
       about: "Sobre Nós",
       contact: "Contato",
       proposal: "Solicitar Proposta",
@@ -24,6 +25,8 @@ const translations = {
     nav: {
       home: "Home",
       services: "Services",
+      // ADICIONADO: Chave 'training'
+      training: "Training", 
       about: "About Us",
       contact: "Contact",
       proposal: "Request a Quote",
@@ -42,6 +45,8 @@ const translations = {
     nav: {
       home: "Inicio",
       services: "Servicios",
+      // ADICIONADO: Chave 'training'
+      training: "Capacitación", // 'Capacitación' is common for training/courses in Spanish
       about: "Sobre Nosotros",
       contact: "Contacto",
       proposal: "Solicitar Cotización",
@@ -65,6 +70,7 @@ export const LanguageProvider = ({ children }) => {
 
   const t = (path) => {
     const keys = path.split(".");
+    // Função para navegar pelo objeto 'translations' e retornar a tradução
     return keys.reduce((acc, key) => acc?.[key], translations[language]) || path;
   };
 
