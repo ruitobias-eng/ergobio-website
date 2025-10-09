@@ -58,8 +58,8 @@ export default function Layout({ children }) {
       action: () => scrollToSection("servicos") 
     },
     { 
-      label: t("nav.about"), 
-      action: () => scrollToSection("sobre") 
+      label: t("nav.trainings"), // Adicionado link para Treinamentos
+      action: () => scrollToSection("treinamentos") 
     },
     { 
       label: t("nav.contact"), 
@@ -68,6 +68,7 @@ export default function Layout({ children }) {
   ];
 
   // Escolhe a logo baseada no tema
+  // Nota: A troca de logo já é feita pelo React/state, mas a animação de opacidade ajuda na transição visual.
   const currentLogo = isDarkMode ? LogoDark : LogoLight;
 
   return (
@@ -87,7 +88,11 @@ export default function Layout({ children }) {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="transition-all hover:opacity-80 flex items-center hover:scale-105 duration-300"
             >
-              <img
+              <motion.img
+                key={isDarkMode ? 'dark' : 'light'} // Key para forçar a animação
+                initial={{ opacity: 0.5 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
                 src={currentLogo}
                 alt="ErgoBio Logo"
                 className="h-10 md:h-12 w-auto"
@@ -100,7 +105,8 @@ export default function Layout({ children }) {
                 <motion.button
                   key={index}
                   onClick={link.action}
-                  className="text-foreground dark:text-foreground/90 hover:text-secondary dark:hover:text-secondary/80 transition-all font-semibold text-[15px] tracking-wide"
+                  // Contraste ajustado para full foreground
+                  className="text-foreground hover:text-secondary dark:hover:text-secondary transition-all font-semibold text-[15px] tracking-wide"
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -134,7 +140,7 @@ export default function Layout({ children }) {
                       exit={{ rotate: -90, opacity: 0 }}
                       transition={{ duration: 0.4 }}
                     >
-                      <Moon className="w-5 h-5 text-primary dark:text-primary/80" />
+                      <Moon className="w-5 h-5 text-primary" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -145,7 +151,8 @@ export default function Layout({ children }) {
                 <select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="bg-card dark:bg-card/80 border border-secondary/50 dark:border-secondary/40 text-foreground dark:text-foreground/90 rounded-xl px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-secondary/30 dark:focus:ring-secondary/20 backdrop-blur-sm transition-all duration-300"
+                  // Ajustado contraste e foco do seletor
+                  className="bg-card dark:bg-card/90 border border-secondary/50 dark:border-secondary/40 text-foreground rounded-xl px-3 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-secondary/50 dark:focus:ring-secondary/40 backdrop-blur-sm transition-all duration-300"
                 >
                   <option value="pt-BR">🇧🇷 PT</option>
                   <option value="en">🇺🇸 EN</option>
@@ -160,7 +167,8 @@ export default function Layout({ children }) {
               >
                 <Button
                   onClick={() => scrollToSection("contato")}
-                  className="bg-gradient-to-r from-secondary to-accent dark:from-secondary/80 dark:to-accent/80 hover:from-secondary/90 hover:to-accent/90 dark:hover:from-secondary/70 dark:hover:to-accent/70 text-primary-foreground font-bold shadow-lg hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 px-6 py-2 rounded-xl"
+                  // CORREÇÃO CRÍTICA: Substituído 'accent' por 'contraste'
+                  className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 hover:from-secondary/90 hover:to-contraste/90 dark:hover:from-secondary/70 dark:hover:to-contraste/70 text-primary-foreground font-bold shadow-lg hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 px-6 py-2 rounded-xl"
                 >
                   {t("nav.proposal")}
                 </Button>
@@ -170,7 +178,8 @@ export default function Layout({ children }) {
             {/* BOTÃO MOBILE */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-foreground dark:text-foreground/90 p-2 bg-card/80 dark:bg-card/70 rounded-xl backdrop-blur-sm border border-border"
+              // Contraste ajustado
+              className="md:hidden text-foreground p-2 bg-card/80 dark:bg-card/70 rounded-xl backdrop-blur-sm border border-border"
               whileTap={{ scale: 0.9 }}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -193,7 +202,8 @@ export default function Layout({ children }) {
                   <motion.button
                     key={index}
                     onClick={link.action}
-                    className="block w-full text-left text-foreground dark:text-foreground/90 hover:text-secondary dark:hover:text-secondary/80 transition-all font-semibold py-3 text-lg border-b border-border last:border-b-0"
+                    // Contraste ajustado para full foreground
+                    className="block w-full text-left text-foreground hover:text-secondary dark:hover:text-secondary transition-all font-semibold py-3 text-lg border-b border-border last:border-b-0"
                     whileHover={{ scale: 1.02, x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -205,10 +215,10 @@ export default function Layout({ children }) {
                   {/* Botão de tema no mobile */}
                   <motion.button
                     onClick={toggleTheme}
-                    className="flex items-center justify-center gap-2 flex-1 bg-muted dark:bg-muted/80 text-foreground dark:text-foreground/90 rounded-xl py-3 font-semibold transition-all hover:bg-muted/80 dark:hover:bg-muted/60 border border-border"
+                    className="flex items-center justify-center gap-2 flex-1 bg-muted dark:bg-muted/80 text-foreground rounded-xl py-3 font-semibold transition-all hover:bg-muted/80 dark:hover:bg-muted/60 border border-border"
                     whileHover={{ scale: 1.02 }}
                   >
-                    {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                    {isDarkMode ? <Sun className="w-5 h-5 text-amber-500" /> : <Moon className="w-5 h-5 text-primary" />}
                     {isDarkMode ? "Modo Claro" : "Modo Escuro"}
                   </motion.button>
 
@@ -217,7 +227,8 @@ export default function Layout({ children }) {
                     <select
                       value={language}
                       onChange={(e) => setLanguage(e.target.value)}
-                      className="w-full bg-card dark:bg-card/80 border border-secondary/50 dark:border-secondary/40 text-foreground dark:text-foreground/90 rounded-xl px-3 py-3 text-sm font-semibold"
+                      // Contraste ajustado no mobile
+                      className="w-full bg-card dark:bg-card/90 border border-secondary/50 dark:border-secondary/40 text-foreground rounded-xl px-3 py-3 text-sm font-semibold"
                     >
                       <option value="pt-BR">🇧🇷 PT</option>
                       <option value="en">🇺🇸 EN</option>
@@ -229,7 +240,8 @@ export default function Layout({ children }) {
                 <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                   <Button
                     onClick={() => scrollToSection("contato")}
-                    className="w-full bg-gradient-to-r from-secondary to-accent dark:from-secondary/80 dark:to-accent/80 hover:from-secondary/90 hover:to-accent/90 dark:hover:from-secondary/70 dark:hover:to-accent/70 text-primary-foreground font-bold py-3 rounded-xl mt-4 shadow-lg hover:shadow-xl"
+                    // CORREÇÃO CRÍTICA: Substituído 'accent' por 'contraste'
+                    className="w-full bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 hover:from-secondary/90 hover:to-contraste/90 dark:hover:from-secondary/70 dark:hover:to-contraste/70 text-primary-foreground font-bold py-3 rounded-xl mt-4 shadow-lg hover:shadow-xl"
                   >
                     {t("nav.proposal")}
                   </Button>
@@ -244,40 +256,48 @@ export default function Layout({ children }) {
       <main className="pt-20">{children}</main>
 
       {/* === FOOTER === */}
-      <footer className="bg-gradient-to-br from-primary to-primary/90 dark:from-primary/80 dark:to-primary/70 text-primary-foreground py-16 border-t border-border mt-24">
+      <footer 
+        // CORREÇÃO: Usando primary/background para um footer com contraste consistente e cores ajustadas
+        className="bg-primary dark:bg-background/90 text-primary-foreground py-16 border-t border-border mt-24"
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
           <div>
-            <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent dark:from-secondary/80 dark:to-accent/80 bg-clip-text text-transparent">
+            {/* CORREÇÃO: Gradiente de texto usando contraste em vez de accent */}
+            <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 bg-clip-text text-transparent">
               ErgoBio
             </h3>
-            <p className="text-primary-foreground/80 dark:text-primary-foreground/90 text-lg leading-relaxed">
+            {/* CORREÇÃO: Cor do texto ajustada para primary-foreground para legibilidade */}
+            <p className="text-primary-foreground dark:text-foreground/90 text-lg leading-relaxed">
               Ergonomia e Saúde Ocupacional para ambientes de trabalho mais humanos, seguros e produtivos.
             </p>
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-6 text-secondary dark:text-secondary/80">{t("nav.contact")}</h4>
-            <ul className="space-y-3 text-primary-foreground/80 dark:text-primary-foreground/90">
+            {/* CORREÇÃO: Título usando contraste para ser vibrante e ter contraste no footer escuro */}
+            <h4 className="text-xl font-bold mb-6 text-contraste dark:text-contraste/80">{t("nav.contact")}</h4>
+            <ul className="space-y-3 text-primary-foreground dark:text-foreground/90">
               <li className="flex items-center gap-3 font-medium">
-                <span className="text-secondary dark:text-secondary/80">📞</span> (41) 9848-7876
+                <span className="text-secondary dark:text-contraste">📞</span> (41) 9848-7876
               </li>
               <li className="flex items-center gap-3 font-medium">
-                <span className="text-secondary dark:text-secondary/80">✉️</span> tatiana@ergobio.com.br
+                <span className="text-secondary dark:text-contraste">✉️</span> tatiana@ergobio.com.br
               </li>
               <li className="flex items-center gap-3 font-medium">
-                <span className="text-secondary dark:text-secondary/80">📍</span> Curitiba - PR
+                <span className="text-secondary dark:text-contraste">📍</span> Curitiba - PR
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xl font-bold mb-6 text-secondary dark:text-secondary/80">Links Rápidos</h4>
-            <ul className="space-y-3 text-primary-foreground/80 dark:text-primary-foreground/90">
+            {/* CORREÇÃO: Título usando contraste */}
+            <h4 className="text-xl font-bold mb-6 text-contraste dark:text-contraste/80">Links Rápidos</h4>
+            <ul className="space-y-3 text-primary-foreground dark:text-foreground/90">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <button 
                     onClick={link.action}
-                    className="font-medium hover:text-secondary dark:hover:text-secondary/80 transition-all duration-300 hover:translate-x-1 block"
+                    // Hover ajustado para contraste
+                    className="font-medium hover:text-secondary dark:hover:text-secondary transition-all duration-300 hover:translate-x-1 block"
                   >
                     {link.label}
                   </button>
@@ -287,7 +307,7 @@ export default function Layout({ children }) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-primary-foreground/20 dark:border-primary-foreground/30 pt-6 text-center text-primary-foreground/60 dark:text-primary-foreground/70 text-sm">
+        <div className="mt-12 border-t border-primary-foreground/20 dark:border-foreground/30 pt-6 text-center text-primary-foreground/70 dark:text-foreground/80 text-sm">
           © 2025 ErgoBio. {t("footer.rights")}
         </div>
       </footer>

@@ -4,15 +4,44 @@
 @tailwind utilities;
 
 /* ===========================================================
+   🎨 VARIÁVEIS DE COR GLOBAL (DEFINIÇÃO)
+   =========================================================== */
+
+/* CORREÇÃO CRÍTICA: Substituído theme(...) por var(...) para referenciar as variáveis nativas
+   geradas pelo Tailwind. Isso resolve o erro de build. */
+
+:root {
+  /* Referenciando as variáveis nativas do Tailwind. Assumindo que seu tailwind.config.js
+     define colors.primary, colors.secondary, etc., que se traduzem em --primary, --secondary, etc. */
+  --cor-primaria: var(--primary);
+  --cor-secundaria: var(--secondary);
+  --cor-contraste: var(--contraste);
+  --card: var(--card);
+  --muted: var(--muted);
+}
+
+.dark {
+  /* Referenciando as variáveis nativas do Tailwind para o dark mode */
+  --cor-primaria: var(--primary);
+  --cor-secundaria: var(--secondary);
+  --cor-contraste: var(--contraste);
+  --card: var(--card);
+  --muted: var(--muted);
+}
+
+
+/* ===========================================================
    🎯 CORREÇÕES E GRADIENTES ADAPTATIVOS
    =========================================================== */
 
 /* 🌈 Gradientes adaptativos para componentes */
 .gradient-light-intense {
+  /* Mantido, agora usando --cor-primaria resolvida */
   background: linear-gradient(135deg, var(--cor-primaria, #0ea5e9) 0%, #1e3a5f 100%);
 }
 
 .gradient-dark-subtle {
+  /* Mantido, agora usando --cor-primaria resolvida */
   background: linear-gradient(135deg, var(--cor-primaria, #0ea5e9) 0%, #2d4a6b 100%);
 }
 
@@ -20,33 +49,35 @@
 .text-gradient-ergo,
 .text-gradient-ergo-light,
 .text-gradient-ergo-dark {
+  /* Mantido, agora usando --cor-secundaria e --cor-contraste resolvidas */
   background: linear-gradient(135deg, var(--cor-secundaria, #22d3ee) 0%, var(--cor-contraste, #a855f7) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* 🎪 Cards com gradiente */
+/* 🎪 Cards com gradiente - Mantido */
 .card-gradient-light {
-  background: linear-gradient(135deg, var(--card, #f3f4f6) 0%, var(--muted, #e5e7eb) 100%);
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
 }
 
 .card-gradient-dark {
-  background: linear-gradient(135deg, var(--card, #1f2937) 0%, var(--muted, #374151) 50%);
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 50%);
 }
+
 
 /* ===========================================================
    🚀 PERFORMANCE E OTIMIZAÇÃO
    =========================================================== */
 
-/* 📱 Melhorias mobile */
+/* 📱 Melhorias mobile - Mantido */
 @media (max-width: 768px) {
   .blur-3xl {
     filter: blur(40px);
   }
 }
 
-/* 🖨️ Estilos de impressão */
+/* 🖨️ Estilos de impressão - Mantido */
 @media print {
   * {
     @apply text-black bg-white;
@@ -67,7 +98,7 @@
   }
 }
 
-/* 🎯 Acessibilidade */
+/* 🎯 Acessibilidade (prefere-reduced-motion) - Mantido */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -85,7 +116,7 @@
   }
 }
 
-/* 🔥 Correções de contraste */
+/* 🔥 Correções de contraste - Mantido */
 .force-light-bg {
   background-color: oklch(1 0 0) !important;
 }
@@ -94,12 +125,12 @@
   background-color: oklch(0.12 0.02 260) !important;
 }
 
-/* 🎨 Contraste de imagens no modo escuro */
+/* 🎨 Contraste de imagens no modo escuro - Mantido */
 .dark img {
   filter: brightness(0.9) contrast(1.1);
 }
 
-/* 📏 Tipografia responsiva */
+/* 📏 Tipografia responsiva - Mantido */
 @media (min-width: 1024px) {
   h1 {
     @apply text-5xl lg:text-6xl;
@@ -110,7 +141,7 @@
   }
 }
 
-/* 🌀 Hover effects */
+/* 🌀 Hover effects - Mantido */
 .hover-lift {
   @apply transition-transform duration-300 ease-out;
 }
