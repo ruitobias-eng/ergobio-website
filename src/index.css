@@ -17,7 +17,6 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Core Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -36,8 +35,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  
-  /* Chart Colors */
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -46,101 +44,88 @@
 }
 
 /* ===========================================================
-   🎨 Tema Claro - Paleta Institucional ErgoBio Modernizada
+   🌐 ERGOBIO DESIGN SYSTEM – VISIBILIDADE APRIMORADA
+   Tema Claro → texto escuro e contrastante
+   Tema Escuro → texto claro e confortável
    =========================================================== */
+
+/* === Tema Claro === */
 :root {
   --radius: 0.625rem;
 
-  /* 🎯 Paleta ErgoBio - Cores Principais */
-  --cor-primaria: #253c58;      /* Azul marinho profissional */
-  --cor-secundaria: #42b69b;    /* Verde água suave */
-  --cor-contraste: #f96d00;     /* Laranja energético */
-  --cor-texto: #385170;         /* Azul acinzentado para texto */
+  /* Paleta principal */
+  --cor-primaria: #1a365d;       /* Azul mais escuro, leitura forte */
+  --cor-secundaria: #2b8a78;     /* Verde médio mais saturado */
+  --cor-contraste: #ff6b00;      /* Laranja vivo */
+  --cor-texto: #1e293b;          /* Azul-acinzentado escuro (ótimo contraste) */
 
-  /* 🎨 Sistema de Cores Base - Tema Claro */
-  --background: oklch(0.99 0.01 260);           /* Branco levemente azulado */
-  --foreground: oklch(0.15 0.02 260);           /* Texto escuro legível */
-  
-  --card: oklch(1 0 0);                         /* Branco puro para cards */
-  --card-foreground: oklch(0.15 0.02 260);
-  
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.02 260);
-  
-  /* 🎪 Cores Principais */
+  /* Fundo e superfície */
+  --background: #f8fafc;         /* Quase branco (leve tom frio) */
+  --foreground: #0f172a;         /* Texto principal */
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --popover: #ffffff;
+  --popover-foreground: #1e293b;
+
+  /* Elementos */
   --primary: var(--cor-primaria);
-  --primary-foreground: oklch(0.98 0.01 260);
-  
+  --primary-foreground: #f8fafc;
   --secondary: var(--cor-secundaria);
-  --secondary-foreground: var(--cor-primaria);
-  
+  --secondary-foreground: #f0fdfa;
   --accent: var(--cor-contraste);
-  --accent-foreground: oklch(1 0 0);
-  
-  /* 🎭 Tons Auxiliares */
-  --muted: oklch(0.96 0.01 260);                /* Fundo suave */
-  --muted-foreground: oklch(0.55 0.02 260);     /* Texto secundário */
-  
-  --border: oklch(0.88 0.01 260);               /* Bordas sutis */
-  --input: oklch(0.95 0.01 260);                /* Campos de entrada */
-  --ring: var(--cor-secundaria);                /* Foco */
-  
-  /* 📊 Cores para gráficos (opcional) */
-  --chart-1: oklch(0.6 0.15 260);
-  --chart-2: oklch(0.55 0.18 160);
-  --chart-3: oklch(0.5 0.2 30);
-  --chart-4: oklch(0.65 0.12 320);
-  --chart-5: oklch(0.7 0.1 200);
+  --accent-foreground: #ffffff;
+
+  --muted: #e2e8f0;
+  --muted-foreground: #475569;
+  --border: #cbd5e1;
+  --input: #e2e8f0;
+  --ring: var(--cor-secundaria);
+
+  /* Gráficos */
+  --chart-1: #2563eb; /* azul */
+  --chart-2: #16a34a; /* verde */
+  --chart-3: #f97316; /* laranja */
+  --chart-4: #9333ea; /* roxo */
+  --chart-5: #e11d48; /* rosa avermelhado */
 }
 
-/* ===========================================================
-   🌙 Tema Escuro - Paleta Adaptada Otimizada
-   =========================================================== */
+/* === Tema Escuro === */
 .dark {
-  /* 🎯 Paleta ErgoBio - Ajustada para contraste no escuro */
-  --cor-primaria: #67dabf;                      /* Verde água como primário */
-  --cor-secundaria: #142d4c;                    /* Azul marinho como secundário */
-  --cor-contraste: #ff8c42;                     /* Laranja mais vibrante */
-  --cor-texto: #e2e8f0;                         /* Texto claro legível */
+  --cor-primaria: #67e8f9;       /* Azul-ciano claro */
+  --cor-secundaria: #00bfa5;     /* Verde-água vivo */
+  --cor-contraste: #ffa94d;      /* Laranja suave */
+  --cor-texto: #e2e8f0;          /* Texto claro e suave */
 
-  /* 🎨 Sistema de Cores Base - Tema Escuro */
-  --background: oklch(27.387% 0.0293 267.572);           /* Fundo escuro suave */
-  --foreground: oklch(0.98 0.01 260);           /* Texto claro de alto contraste */
-  
-  --card: oklch(0.16 0.02 260);                 /* Cards mais claros que o fundo */
-  --card-foreground: oklch(0.98 0.01 260);
-  
-  --popover: oklch(0.16 0.02 260);
-  --popover-foreground: oklch(0.98 0.01 260);
-  
-  /* 🎪 Cores Principais (Invertidas para melhor contraste) */
+  --background: #0f172a;         /* Azul marinho profundo */
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+
   --primary: var(--cor-primaria);
-  --primary-foreground: oklch(0.12 0.02 260);
-  
+  --primary-foreground: #0f172a;
   --secondary: var(--cor-secundaria);
-  --secondary-foreground: oklch(0.98 0.01 260);
-  
+  --secondary-foreground: #0f172a;
   --accent: var(--cor-contraste);
-  --accent-foreground: oklch(0.12 0.02 260);
-  
-  /* 🎭 Tons Auxiliares Escuros */
-  --muted: oklch(0.18 0.02 260);                /* Fundo muted mais escuro */
-  --muted-foreground: oklch(0.72 0.02 260);     /* Texto muted mais claro */
-  
-  --border: oklch(0.25 0.02 260);               /* Bordas mais visíveis */
-  --input: oklch(0.20 0.02 260);                /* Campos mais escuros */
-  --ring: var(--cor-primaria);                  /* Foco com cor primária */
-  
-  /* 📊 Cores para gráficos no escuro */
-  --chart-1: oklch(0.7 0.15 260);
-  --chart-2: oklch(0.65 0.18 160);
-  --chart-3: oklch(0.6 0.2 30);
-  --chart-4: oklch(0.75 0.12 320);
-  --chart-5: oklch(0.8 0.1 200);
+  --accent-foreground: #0f172a;
+
+  --muted: #334155;
+  --muted-foreground: #cbd5e1;
+  --border: #475569;
+  --input: #334155;
+  --ring: var(--cor-secundaria);
+
+  /* Gráficos */
+  --chart-1: #60a5fa;
+  --chart-2: #34d399;
+  --chart-3: #fbbf24;
+  --chart-4: #a78bfa;
+  --chart-5: #f472b6;
 }
 
 /* ===========================================================
-   🧱 Camada Base - Tipografia e Elementos Fundamentais
+   🧱 Base Layer - Estrutura e Tipografia
    =========================================================== */
 @layer base {
   * {
@@ -159,68 +144,41 @@
     font-feature-settings: 'kern' 1, 'liga' 1;
   }
 
-  /* 🎯 Tipografia Hierárquica */
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight text-balance;
     font-family: 'Poppins', system-ui, sans-serif;
   }
 
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
-  }
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl leading-tight; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl leading-snug; }
+  h3 { @apply text-2xl md:text-3xl leading-snug; }
+  h4 { @apply text-xl md:text-2xl leading-relaxed; }
 
-  h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl leading-snug;
-  }
+  p { @apply leading-relaxed text-pretty; color: var(--foreground); }
 
-  h3 {
-    @apply text-2xl md:text-3xl leading-snug;
-  }
+  a { @apply transition-colors duration-200 hover:text-accent; }
 
-  h4 {
-    @apply text-xl md:text-2xl leading-relaxed;
-  }
-
-  p {
-    @apply leading-relaxed text-pretty;
-    color: var(--foreground);
-  }
-
-  /* 🎨 Links com transição suave */
-  a {
-    @apply transition-colors duration-200 hover:text-accent;
-  }
-
-  /* 📱 Seleção de texto personalizada */
-  ::selection {
-    @apply bg-secondary/30 text-foreground;
-  }
-
-  ::-moz-selection {
-    @apply bg-secondary/30 text-foreground;
-  }
+  ::selection { @apply bg-secondary/30 text-foreground; }
+  ::-moz-selection { @apply bg-secondary/30 text-foreground; }
 }
 
 /* ===========================================================
-   ✨ Camada de Componentes - Utilitários Visuais
+   ✨ Componentes Customizados
    =========================================================== */
 @layer components {
-  /* 🎪 Container com constraints */
   .container-custom {
     @apply max-w-7xl mx-auto px-6 lg:px-8;
   }
 
-  /* ✨ Cards modernos com efeitos */
   .card-modern {
-    @apply bg-card/50 backdrop-blur-sm border border-border rounded-3xl 
-           shadow-lg hover:shadow-2xl transition-all duration-500;
+    @apply bg-card/50 backdrop-blur-sm border border-border rounded-3xl shadow-lg 
+           hover:shadow-2xl transition-all duration-500;
   }
 
   .card-modern:hover {
     transform: translateY(-2px);
   }
 
-  /* 🌈 Gradientes da marca */
   .gradient-primary {
     background: linear-gradient(135deg, var(--cor-primaria) 0%, #1e3a5f 100%);
   }
@@ -240,7 +198,6 @@
     background-clip: text;
   }
 
-  /* 💫 Efeitos de brilho e overlay */
   .glow-overlay {
     background: linear-gradient(
       45deg,
@@ -255,7 +212,6 @@
     @apply backdrop-blur-md bg-background/60 border border-border/50;
   }
 
-  /* 🎯 Botões com estados interativos */
   .btn-primary {
     @apply bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold
            hover:shadow-lg transition-all duration-300 transform hover:scale-105
@@ -276,79 +232,40 @@
 }
 
 /* ===========================================================
-   🛠 Camada de Utilitários - Animações e Estados
+   🛠 Utilitários e Animações
    =========================================================== */
 @layer utilities {
-  /* 🌀 Animações personalizadas */
   @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes slide-in-left {
-    from {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(159, 211, 199, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(159, 211, 199, 0.6);
-    }
+    0%, 100% { box-shadow: 0 0 20px rgba(159, 211, 199, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(159, 211, 199, 0.6); }
   }
 
-  .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out;
-  }
+  .animate-fade-in-up { animation: fade-in-up 0.6s ease-out; }
+  .animate-slide-in-left { animation: slide-in-left 0.6s ease-out; }
+  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 
-  .animate-slide-in-left {
-    animation: slide-in-left 0.6s ease-out;
-  }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
 
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  /* 📐 Utilitários de texto */
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .text-pretty {
-    text-wrap: pretty;
-  }
-
-  /* 🎨 Estados de interação */
-  .transition-base {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .hover-lift {
-    @apply transition-transform duration-300 hover:-translate-y-1;
-  }
+  .transition-base { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+  .hover-lift { @apply transition-transform duration-300 hover:-translate-y-1; }
 }
 
 /* ===========================================================
    📱 Responsividade e Acessibilidade
    =========================================================== */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -356,54 +273,25 @@
   }
 }
 
-/* 📏 Breakpoints customizados */
 @screen xs {
-  .container-custom {
-    @apply px-4;
-  }
+  .container-custom { @apply px-4; }
 }
 
-/* 🖥 Scrollbar personalizada */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* 🖥 Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { @apply bg-muted; }
+::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/30; }
 
-::-webkit-scrollbar-track {
-  @apply bg-muted;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-border rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted-foreground/30;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  @apply bg-border;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted-foreground/50;
-}
+.dark ::-webkit-scrollbar-thumb { @apply bg-border; }
+.dark ::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/50; }
 
 /* 🎯 Foco acessível */
-.focus-visible {
-  @apply outline-2 outline-offset-2 outline-ring;
-}
+.focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
 
-/* 🚨 Melhorias de impressão */
+/* 🖨 Impressão */
 @media print {
-  .no-print {
-    display: none !important;
-  }
-  
-  body {
-    @apply text-black bg-white;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-black;
-  }
+  .no-print { display: none !important; }
+  body { @apply text-black bg-white; }
+  h1, h2, h3, h4, h5, h6 { @apply text-black; }
 }

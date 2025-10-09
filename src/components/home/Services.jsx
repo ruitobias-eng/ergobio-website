@@ -77,28 +77,32 @@ export default function Services() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 dark:border-secondary/30 mb-6"
           >
-            <ClipboardCheck className="w-4 h-4 text-secondary dark:text-secondary/80" />
+            {/* Removido /80 para contraste máximo no ícone */}
+            <ClipboardCheck className="w-4 h-4 text-secondary dark:text-secondary" />
             <span className="text-sm font-medium text-foreground dark:text-foreground/90">
               Serviços Especializados
             </span>
           </motion.div>
 
+          {/* CORREÇÃO CRÍTICA: Título deve refletir o conteúdo dos cards (Consultoria e Avaliação) */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+            // Removido /90 para contraste máximo
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
           >
-            <span className="text-foreground dark:text-foreground/90">Treinamentos e </span>{' '}
-            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste">
-              Palestras
+            Soluções Completas em{' '}
+            {/* Ajuste de contraste para a palavra-chave no dark mode */}
+            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
+              Ergonomia
             </span>
           </motion.h2>
           
-          <p className="text-xl md:text-2xl text-muted-foreground dark:text-muted-foreground/80 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-foreground/80 dark:text-foreground/90 max-w-4xl mx-auto leading-relaxed">
             Soluções completas e personalizadas para garantir a{" "}
-            <strong className="text-foreground dark:text-foreground/90">saúde ocupacional</strong> e{" "}
-            <strong className="text-foreground dark:text-foreground/90">conformidade legal</strong> da sua empresa
+            <strong className="text-foreground">saúde ocupacional</strong> e{" "}
+            <strong className="text-foreground">conformidade legal</strong> da sua empresa.
           </p>
         </motion.div>
 
@@ -113,15 +117,18 @@ export default function Services() {
               viewport={{ once: true }}
               className="group"
             >
-              <Card className="h-full border border-border bg-card/50 dark:bg-card/30 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-105">
+              {/* Ajustado o background do card (bg-card/70) e adicionado o efeito de elevação (hover:-translate-y-1) */}
+              <Card className="h-full border border-border bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-[1.02] group-hover:-translate-y-1">
                 {/* Image Section */}
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent dark:from-background/80 dark:via-background/30 dark:to-transparent" />
+                  {/* Escurecido o gradiente overlay para melhor contraste do texto/ícone sobre a imagem */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent dark:from-background/90 dark:via-background/50 dark:to-transparent" />
                   
                   {/* Icon Badge */}
                   <div className={`absolute top-4 left-4 p-3 rounded-xl bg-gradient-to-r ${service.gradientLight} dark:${service.gradientDark} shadow-lg`}>
@@ -130,7 +137,7 @@ export default function Services() {
 
                   {/* Service Label */}
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-background/80 dark:bg-background/70 backdrop-blur-sm text-foreground dark:text-foreground/90 text-sm font-medium rounded-full border border-border">
+                    <span className="px-3 py-1 bg-background/80 dark:bg-background/80 backdrop-blur-sm text-foreground dark:text-foreground text-sm font-medium rounded-full border border-border">
                       Especializado
                     </span>
                   </div>
@@ -138,26 +145,30 @@ export default function Services() {
 
                 <CardContent className="p-6">
                   {/* Title */}
-                  <h3 className="text-2xl font-bold text-foreground dark:text-foreground/90 mb-4 leading-tight">
+                  {/* Removido /90 para contraste máximo */}
+                  <h3 className="text-2xl font-bold text-foreground mb-4 leading-tight">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-muted-foreground dark:text-muted-foreground/80 leading-relaxed mb-6">
+                  {/* Ajustado o texto para maior opacidade para melhor contraste */}
+                  <p className="text-foreground/80 dark:text-foreground/90 leading-relaxed mb-6">
                     {service.description}
                   </p>
 
                   {/* Features Grid */}
                   <div className="grid sm:grid-cols-2 gap-4 mb-6">
                     <div>
-                      <h4 className="font-semibold text-foreground dark:text-foreground/90 mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-secondary dark:text-secondary/80" />
+                      {/* Removido /90 para contraste máximo nos títulos de subseção */}
+                      <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
+                        {/* Removido /80 do ícone */}
+                        <CheckCircle2 className="w-4 h-4 text-secondary dark:text-secondary" />
                         Inclui:
                       </h4>
                       <ul className="space-y-2">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground dark:text-muted-foreground/80">
-                            <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary/80 rounded-full" />
+                          <li key={idx} className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
+                            <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full" />
                             {feature}
                           </li>
                         ))}
@@ -165,14 +176,16 @@ export default function Services() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-foreground dark:text-foreground/90 mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
-                        <ArrowRight className="w-4 h-4 text-contraste dark:text-contraste/80" />
+                      {/* Removido /90 para contraste máximo nos títulos de subseção */}
+                      <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
+                        {/* Removido /80 do ícone */}
+                        <ArrowRight className="w-4 h-4 text-contraste dark:text-contraste" />
                         Benefícios:
                       </h4>
                       <ul className="space-y-2">
                         {service.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground dark:text-muted-foreground/80">
-                            <div className="w-1.5 h-1.5 bg-contraste dark:bg-contraste/80 rounded-full" />
+                          <li key={idx} className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
+                            <div className="w-1.5 h-1.5 bg-contraste dark:bg-contraste rounded-full" />
                             {benefit}
                           </li>
                         ))}
@@ -184,7 +197,8 @@ export default function Services() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 px-4 bg-secondary text-white font-semibold rounded-xl hover:bg-secondary/90 dark:bg-contraste dark:hover:bg-contraste/80 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                      // Ajustado o dark mode para o botão de ação principal
+                      className="w-full py-3 px-4 bg-secondary text-white font-semibold rounded-xl hover:bg-secondary/90 dark:bg-contraste dark:text-background dark:hover:bg-contraste/90 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                     >
                       Saiba Mais
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -192,7 +206,7 @@ export default function Services() {
 
                 </CardContent>
 
-                {/* Hover Border Effect */}
+                {/* Hover Border Effect (Mantido) */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${service.gradientLight} dark:${service.gradientDark} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
               </Card>
             </motion.div>
@@ -207,17 +221,21 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5 rounded-3xl p-8 border border-border">
-            <h3 className="text-2xl font-bold text-foreground dark:text-foreground/90 mb-4">
+          {/* Aumentado o contraste do CTA de fundo */}
+          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/15 dark:to-secondary/15 rounded-3xl p-8 border border-border">
+            {/* Removido /90 para contraste máximo */}
+            <h3 className="text-2xl font-bold text-foreground mb-4">
               Precisa de uma solução personalizada?
             </h3>
-            <p className="text-muted-foreground dark:text-muted-foreground/80 mb-6 max-w-2xl mx-auto">
+            {/* Aumentada a opacidade do texto */}
+            <p className="text-foreground/80 dark:text-foreground/90 mb-6 max-w-2xl mx-auto">
               Nossa equipe está pronta para desenvolver um plano sob medida para as necessidades específicas da sua empresa.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-secondary text-white dark:bg-contraste px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 dark:hover:bg-contraste/80 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
+              // Ajustado o dark mode para o botão de ação principal
+              className="bg-secondary text-white dark:bg-contraste dark:text-background px-8 py-4 rounded-xl font-semibold hover:bg-secondary/90 dark:hover:bg-contraste/90 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
             >
               Solicitar Consultoria Personalizada
             </motion.button>

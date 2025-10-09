@@ -17,6 +17,7 @@ export default function Contact() {
     const formData = new FormData(e.target);
     
     try {
+      // Nota: A URL do Formspree deve ser segura. Mantida a URL original.
       const response = await fetch("https://formspree.io/f/mjkvwzlo", {
         method: "POST",
         body: formData,
@@ -70,6 +71,18 @@ export default function Contact() {
     }
   ];
 
+  // Variantes para a animação do header
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+  };
+  
+  // Variantes para a animação do badge
+  const badgeVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
+  };
+  
   return (
     <section id="contato" className="py-24 bg-background transition-colors relative overflow-hidden">
       {/* Background Elements */}
@@ -81,21 +94,21 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
           className="text-center mb-16"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
+            variants={badgeVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 dark:border-secondary/30 mb-6"
           >
-            <MessageCircle className="w-4 h-4 text-secondary dark:text-secondary/80" />
-            <span className="text-sm font-medium text-foreground dark:text-foreground/90">
+            <MessageCircle className="w-4 h-4 text-secondary dark:text-secondary" />
+            <span className="text-sm font-medium text-foreground">
               Vamos Conversar
             </span>
           </motion.div>
@@ -106,15 +119,18 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
           >
-            <span className="text-foreground dark:text-foreground/90">Entre em </span>{' '}
-            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste">
+            {/* Removido /90 de text-foreground para contraste máximo no dark mode */}
+            <span className="text-foreground">Entre em </span>{' '}
+            {/* Ajustada a cor do texto para background no contraste para legibilidade */}
+            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
               Contato
             </span>
           </motion.h2>
           
-          <p className="text-xl md:text-2xl text-muted-foreground dark:text-muted-foreground/80 max-w-3xl mx-auto leading-relaxed">
+          {/* Aumentada a opacidade para um tom de texto um pouco mais forte */}
+          <p className="text-xl md:text-2xl text-foreground/80 dark:text-foreground/90 max-w-3xl mx-auto leading-relaxed">
             Estamos prontos para ajudar sua empresa a alcançar um ambiente de trabalho 
-            mais <strong className="text-foreground dark:text-foreground/90">saudável, seguro e produtivo</strong>.
+            mais <strong className="text-foreground">saudável, seguro e produtivo</strong>.
           </p>
         </motion.div>
 
@@ -136,20 +152,23 @@ export default function Contact() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <Card className="border border-border bg-card/50 dark:bg-card/30 backdrop-blur-sm hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                {/* Adicionada a classe translate-y-0 e hover:-translate-y-1 para o efeito de elevação */}
+                <Card className="border border-border bg-card/60 dark:bg-card/40 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                         <item.icon className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold text-lg text-foreground dark:text-foreground/90 mb-1">
+                        {/* Removido /90 dos textos principais para contraste máximo */}
+                        <h3 className="font-semibold text-lg text-foreground mb-1">
                           {item.title}
                         </h3>
-                        <p className="text-foreground dark:text-foreground/90 font-medium text-lg mb-1">
+                        <p className="text-foreground font-medium text-lg mb-1">
                           {item.content}
                         </p>
-                        <p className="text-muted-foreground dark:text-muted-foreground/80 text-sm">
+                        {/* Ajustada a opacidade para melhor contraste no dark mode */}
+                        <p className="text-muted-foreground dark:text-muted-foreground/90 text-sm">
                           {item.description}
                         </p>
                       </div>
@@ -165,23 +184,23 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5 rounded-2xl p-6 border border-border"
+              className="bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/10 dark:to-secondary/10 rounded-2xl p-6 border border-border"
             >
-              <h4 className="font-semibold text-foreground dark:text-foreground/90 mb-3 flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-secondary dark:text-secondary/80" />
+              <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-secondary dark:text-secondary" />
                 Por que escolher a ErgoBio?
               </h4>
-              <ul className="space-y-2 text-sm text-muted-foreground dark:text-muted-foreground/80">
+              <ul className="space-y-2 text-sm text-foreground/80 dark:text-foreground/90">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary/80 rounded-full" />
+                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0" />
                   Consultoria especializada em NR-17
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary/80 rounded-full" />
+                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0" />
                   Resposta rápida e personalizada
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary/80 rounded-full" />
+                  <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full flex-shrink-0" />
                   Soluções práticas e eficientes
                 </li>
               </ul>
@@ -195,21 +214,25 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="border border-border shadow-2xl dark:shadow-xl bg-card/50 dark:bg-card/30 backdrop-blur-sm overflow-hidden">
+            {/* Aumentada a opacidade do card para melhor legibilidade do form */}
+            <Card className="border border-border shadow-2xl dark:shadow-xl bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5 border-b border-border">
-                <CardTitle className="text-2xl text-foreground dark:text-foreground/90 flex items-center gap-2">
-                  <Send className="w-6 h-6 text-secondary dark:text-secondary/80" />
+                {/* Removido /90 do título */}
+                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                  <Send className="w-6 h-6 text-secondary dark:text-secondary" />
                   Envie sua Mensagem
                 </CardTitle>
-                <p className="text-muted-foreground dark:text-muted-foreground/80 mt-2">
+                {/* Aumentada a opacidade da descrição */}
+                <p className="text-foreground/80 dark:text-foreground/90 mt-2">
                   Preencha o formulário abaixo e entraremos em contato o mais breve possível.
                 </p>
               </CardHeader>
               
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Campos de formulário - Melhorado o foco com classe de cor principal */}
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-foreground dark:text-foreground/90 font-medium">
+                    <Label htmlFor="name" className="text-foreground font-medium">
                       Nome Completo *
                     </Label>
                     <Input
@@ -217,12 +240,12 @@ export default function Contact() {
                       name="name"
                       required
                       placeholder="Seu nome completo"
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary/80 transition-colors"
+                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-foreground dark:text-foreground/90 font-medium">
+                    <Label htmlFor="email" className="text-foreground font-medium">
                       E-mail *
                     </Label>
                     <Input
@@ -231,24 +254,24 @@ export default function Contact() {
                       type="email"
                       required
                       placeholder="seu@email.com"
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary/80 transition-colors"
+                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="company" className="text-foreground dark:text-foreground/90 font-medium">
+                    <Label htmlFor="company" className="text-foreground font-medium">
                       Empresa
                     </Label>
                     <Input
                       id="company"
                       name="company"
                       placeholder="Sua empresa (opcional)"
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary/80 transition-colors"
+                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-foreground dark:text-foreground/90 font-medium">
+                    <Label htmlFor="message" className="text-foreground font-medium">
                       Mensagem *
                     </Label>
                     <Textarea
@@ -257,41 +280,42 @@ export default function Contact() {
                       required
                       placeholder="Conte-nos como podemos ajudar sua empresa..."
                       rows={5}
-                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary/80 transition-colors resize-none"
+                      className="bg-background dark:bg-background/80 border-border focus:border-secondary dark:focus:border-secondary transition-colors resize-none"
                     />
                   </div>
 
+                  {/* Botão de Envio - Reforçado o hover e o estado de sending */}
                   <Button
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full py-6 text-lg font-semibold bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 hover:from-secondary/90 hover:to-contraste/90 dark:hover:from-secondary/70 dark:hover:to-contraste/70 text-white shadow-lg hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 disabled:opacity-50"
+                    className="w-full py-6 text-lg font-semibold bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:opacity-90 transition-all duration-300 disabled:opacity-70 disabled:pointer-events-none"
                     size="lg"
                   >
                     {status === "sending" ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                        Enviando...
+                        Aguarde...
                       </>
                     ) : (
                       <>
                         Enviar Mensagem
-                        <Send className="ml-2 w-5 h-5 transition-transform" />
+                        <Send className="ml-2 w-5 h-5" />
                       </>
                     )}
                   </Button>
 
-                  {/* Status Messages */}
+                  {/* Status Messages - Cores mantidas e contraste garantido */}
                   <div className="min-h-[3rem]">
                     {status === "success" && (
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center gap-3 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl text-green-700 dark:text-green-300"
+                        className="flex items-center gap-3 p-4 bg-green-50 dark:bg-green-900/40 border border-green-200 dark:border-green-700 rounded-xl text-green-700 dark:text-green-300"
                       >
                         <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
                         <div>
                           <p className="font-medium">Mensagem enviada com sucesso!</p>
-                          <p className="text-sm">Retornaremos em breve.</p>
+                          <p className="text-sm">Obrigado! Retornaremos em breve.</p>
                         </div>
                       </motion.div>
                     )}
@@ -300,12 +324,12 @@ export default function Contact() {
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center gap-3 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl text-red-700 dark:text-red-300"
+                        className="flex items-center gap-3 p-4 bg-red-50 dark:bg-red-900/40 border border-red-200 dark:border-red-700 rounded-xl text-red-700 dark:text-red-300"
                       >
-                        <div className="w-5 h-5 flex items-center justify-center">⚠️</div>
+                        <div className="w-5 h-5 flex items-center justify-center text-lg">⚠️</div>
                         <div>
                           <p className="font-medium">Erro ao enviar mensagem</p>
-                          <p className="text-sm">Tente novamente ou entre em contato por outro meio.</p>
+                          <p className="text-sm">Por favor, tente novamente ou use o e-mail/telefone.</p>
                         </div>
                       </motion.div>
                     )}

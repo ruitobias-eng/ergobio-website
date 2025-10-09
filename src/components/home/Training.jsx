@@ -47,7 +47,7 @@ export default function Training() {
 
   return (
     <section id="treinamentos" className="py-24 bg-gradient-to-br from-muted/50 to-background dark:from-muted/20 dark:to-background/80 transition-colors relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Background Elements (Mantido) */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-secondary/10 dark:bg-secondary/5 rounded-full blur-3xl" />
@@ -69,8 +69,9 @@ export default function Training() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 dark:border-secondary/30 mb-6"
           >
-            <GraduationCap className="w-4 h-4 text-secondary dark:text-secondary/80" />
-            <span className="text-sm font-medium text-foreground dark:text-foreground/90">
+            {/* Removido /80 para contraste máximo no ícone */}
+            <GraduationCap className="w-4 h-4 text-secondary dark:text-secondary" />
+            <span className="text-sm font-medium text-foreground dark:text-foreground">
               Capacitação e Desenvolvimento
             </span>
           </motion.div>
@@ -79,17 +80,19 @@ export default function Training() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+            // Removido /90 para contraste máximo
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
           >
-            <span className="text-foreground dark:text-foreground/90">Treinamentos e </span>{' '}
-            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste">
+            Treinamentos e{' '}
+            {/* Ajuste de contraste para a palavra-chave no dark mode */}
+            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
               Palestras
             </span>
           </motion.h2>
           
-          <p className="text-xl md:text-2xl text-muted-foreground dark:text-muted-foreground/80 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-foreground/80 dark:text-foreground/90 max-w-4xl mx-auto leading-relaxed">
             Capacitação e conscientização para promover uma cultura de{" "}
-            <strong className="text-foreground dark:text-foreground/90">saúde, segurança e bem-estar</strong> organizacional
+            <strong className="text-foreground">saúde, segurança e bem-estar</strong> organizacional
           </p>
         </motion.div>
 
@@ -108,13 +111,17 @@ export default function Training() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="text-center bg-card/50 dark:bg-card/30 backdrop-blur-sm rounded-2xl p-6 border border-border hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
+              // Aumentado opacidade do background para contraste
+              className="text-center bg-card/70 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
             >
-              <stat.icon className="w-8 h-8 mx-auto mb-3 text-secondary dark:text-secondary/80" />
-              <div className="text-2xl md:text-3xl font-bold text-foreground dark:text-foreground/90 mb-1">
+              {/* Removido /80 do ícone */}
+              <stat.icon className="w-8 h-8 mx-auto mb-3 text-secondary dark:text-secondary" />
+              {/* Removido /90 do texto principal */}
+              <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">
                 {stat.number}
               </div>
-              <div className="text-sm text-muted-foreground dark:text-muted-foreground/80 font-medium">
+              {/* Aumentado opacidade do texto secundário */}
+              <div className="text-sm text-foreground/80 dark:text-foreground/90 font-medium">
                 {stat.label}
               </div>
             </motion.div>
@@ -132,23 +139,26 @@ export default function Training() {
               viewport={{ once: true }}
               className="group"
             >
-              <Card className="h-full border border-border bg-card/50 dark:bg-card/30 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-105">
+              {/* Ajustado background e adicionado efeito de elevação no hover */}
+              <Card className="h-full border border-border bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-[1.02] group-hover:-translate-y-1">
                 <CardHeader className="pb-4">
                   <div className="flex items-start gap-4 mb-4">
                     <div className={`p-4 rounded-xl bg-gradient-to-r ${training.gradientLight} dark:${training.gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <training.icon className="w-8 h-8 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-foreground dark:text-foreground/90 mb-2">
+                      {/* Removido /90 do título */}
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
                         {training.title}
                       </h3>
                       <div className="flex flex-wrap gap-3">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground dark:text-muted-foreground/80">
-                          <Clock className="w-4 h-4" />
+                        {/* Aumentado opacidade dos metadados */}
+                        <div className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
+                          <Clock className="w-4 h-4 text-secondary dark:text-secondary" />
                           {training.duration}
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground dark:text-muted-foreground/80">
-                          <Users className="w-4 h-4" />
+                        <div className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
+                          <Users className="w-4 h-4 text-secondary dark:text-secondary" />
                           {training.audience}
                         </div>
                       </div>
@@ -158,21 +168,23 @@ export default function Training() {
 
                 <CardContent className="space-y-6">
                   {/* Description */}
-                  <p className="text-muted-foreground dark:text-muted-foreground/80 leading-relaxed text-lg">
+                  {/* Aumentado opacidade da descrição */}
+                  <p className="text-foreground/80 dark:text-foreground/90 leading-relaxed text-lg">
                     {training.description}
                   </p>
 
                   {/* Features & Benefits Grid */}
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <h4 className="font-semibold text-foreground dark:text-foreground/90 mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-secondary dark:text-secondary/80" />
+                      {/* Removido /90 e /80 para contraste máximo */}
+                      <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-secondary dark:text-secondary" />
                         Conteúdo Abordado:
                       </h4>
                       <ul className="space-y-2">
                         {training.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground dark:text-muted-foreground/80">
-                            <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary/80 rounded-full" />
+                          <li key={idx} className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
+                            <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full" />
                             {feature}
                           </li>
                         ))}
@@ -180,14 +192,15 @@ export default function Training() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-foreground dark:text-foreground/90 mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
-                        <Star className="w-4 h-4 text-contraste dark:text-contraste/80" />
+                      {/* Removido /90 e /80 para contraste máximo */}
+                      <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
+                        <Star className="w-4 h-4 text-contraste dark:text-contraste" />
                         Benefícios:
                       </h4>
                       <ul className="space-y-2">
                         {training.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground dark:text-muted-foreground/80">
-                            <div className="w-1.5 h-1.5 bg-contraste dark:bg-contraste/80 rounded-full" />
+                          <li key={idx} className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
+                            <div className="w-1.5 h-1.5 bg-contraste dark:bg-contraste rounded-full" />
                             {benefit}
                           </li>
                         ))}
@@ -195,18 +208,19 @@ export default function Training() {
                     </div>
                   </div>
 
-                  {/* CTA Button */}
+                  {/* CTA Button - Cores ajustadas para usar o gradiente de cores principais */}
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-3 px-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 hover:from-secondary/90 hover:to-contraste/90 dark:hover:from-secondary/70 dark:hover:to-contraste/70 text-white font-semibold rounded-xl hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    // Removido as opacidades /80 e /70 nos dark modes para garantir cores mais vibrantes e consistentes
+                    className="w-full py-3 px-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white font-semibold rounded-xl hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                   >
                     Solicitar Orçamento
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </motion.button>
                 </CardContent>
 
-                {/* Hover Border Effect */}
+                {/* Hover Border Effect (Mantido) */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${training.gradientLight} dark:${training.gradientDark} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
               </Card>
             </motion.div>
@@ -221,11 +235,14 @@ export default function Training() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5 rounded-3xl p-8 border border-border">
-            <h3 className="text-2xl font-bold text-foreground dark:text-foreground/90 mb-4">
+          {/* Ajustado opacidade do background para contraste */}
+          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/15 dark:to-secondary/15 rounded-3xl p-8 border border-border">
+            {/* Removido /90 do título */}
+            <h3 className="text-2xl font-bold text-foreground mb-4">
               Programas Customizados para sua Empresa
             </h3>
-            <p className="text-muted-foreground dark:text-muted-foreground/80 mb-6 max-w-2xl mx-auto">
+            {/* Aumentado opacidade do texto */}
+            <p className="text-foreground/80 dark:text-foreground/90 mb-6 max-w-2xl mx-auto">
               Desenvolvemos treinamentos e palestras sob medida para as necessidades específicas 
               do seu negócio, com conteúdo relevante e aplicação prática imediata.
             </p>
@@ -233,14 +250,16 @@ export default function Training() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 hover:from-secondary/90 hover:to-contraste/90 dark:hover:from-secondary/70 dark:hover:to-contraste/70 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
+                // Botão principal com gradiente ajustado
+                className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
               >
                 Agendar Diagnóstico Gratuito
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-secondary dark:border-secondary/80 text-secondary dark:text-secondary/80 px-8 py-4 rounded-xl font-semibold hover:bg-secondary/5 dark:hover:bg-secondary/10 transition-all duration-300"
+                // Botão secundário ajustado para maior contraste no dark mode
+                className="border-2 border-secondary dark:border-secondary text-secondary dark:text-secondary px-8 py-4 rounded-xl font-semibold hover:bg-secondary/5 dark:hover:bg-secondary/10 transition-all duration-300"
               >
                 Ver Conteúdo Programático
               </motion.button>

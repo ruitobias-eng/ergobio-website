@@ -47,6 +47,7 @@ export default function Compliance() {
   return (
     <section id="compliance" className="py-24 relative overflow-hidden">
       {/* Background Gradient Adaptativo */}
+      {/* Mantido o gradiente de fundo por ter baixa opacidade. */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/30 dark:from-primary/20 dark:via-primary/10 dark:to-secondary/10" />
       
       {/* Background Pattern */}
@@ -79,6 +80,7 @@ export default function Compliance() {
               <img 
                 src={complianceImage}
                 alt="Conformidade Legal NR-17"
+                loading="lazy"
                 className="w-full h-auto"
               />
               {/* Gradient Overlay Adaptativo */}
@@ -105,9 +107,11 @@ export default function Compliance() {
               className="absolute -bottom-6 -left-6 bg-background/95 dark:bg-background/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-border"
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-foreground dark:text-foreground/90 mb-1">100%</div>
-                <div className="text-sm text-muted-foreground dark:text-muted-foreground/80 font-medium">Conformidade</div>
-                <div className="text-xs text-muted-foreground dark:text-muted-foreground/80">Garantida</div>
+                {/* Aumentado o contraste para o foreground principal */}
+                <div className="text-2xl font-bold text-foreground mb-1">100%</div>
+                {/* Aumentado o contraste do texto secundário no dark mode */}
+                <div className="text-sm text-muted-foreground dark:text-muted-foreground/90 font-medium">Conformidade</div>
+                <div className="text-xs text-muted-foreground dark:text-muted-foreground/90">Garantida</div>
               </div>
             </motion.div>
           </motion.div>
@@ -130,6 +134,7 @@ export default function Compliance() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/10 dark:bg-foreground/20 backdrop-blur-sm border border-foreground/20 dark:border-foreground/30"
               >
                 <FileText className="w-4 h-4 text-foreground dark:text-foreground/80" />
+                {/* Usando text-foreground sem /90 para melhor legibilidade no light mode */}
                 <span className="text-sm font-medium text-foreground dark:text-foreground/90">
                   Conformidade Legal
                 </span>
@@ -139,18 +144,20 @@ export default function Compliance() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground dark:text-foreground/90"
+                // Usando text-foreground sem /90 para melhor legibilidade em ambos os temas
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
               >
                 Conformidade{' '}
-                <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste">
+                {/* A cor do texto foi ajustada para ter alto contraste no badge laranja do dark mode */}
+                <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
                   Legal
                 </span>{' '}
                 Garantida
               </motion.h2>
 
-              <p className="text-xl text-muted-foreground dark:text-muted-foreground/80 leading-relaxed">
+              <p className="text-xl text-foreground/80 dark:text-foreground/90 leading-relaxed">
                 A ErgoBio é especialista em assegurar que sua empresa atenda plenamente às 
-                exigências da <strong className="text-foreground dark:text-foreground/90">NR-17 e NR-01</strong>, transformando 
+                exigências da <strong className="text-foreground">NR-17 e NR-01</strong>, transformando 
                 obrigações legais em oportunidades de melhoria contínua para a saúde e 
                 produtividade dos seus colaboradores.
               </p>
@@ -165,13 +172,16 @@ export default function Compliance() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-card/50 dark:bg-card/30 backdrop-blur-sm rounded-2xl p-6 border border-border hover:bg-card/70 dark:hover:bg-card/50 transition-all duration-300 group"
+                  // Aumentado a opacidade do background para garantir melhor contraste
+                  className="bg-card/70 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-border hover:bg-card/90 dark:hover:bg-card/70 transition-all duration-300 group"
                 >
                   <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground dark:text-foreground/90 mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground dark:text-muted-foreground/80 text-sm leading-relaxed">{item.desc}</p>
+                  {/* Título com alto contraste */}
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                  {/* Descrição com bom contraste em relação ao fundo do card */}
+                  <p className="text-muted-foreground dark:text-muted-foreground/90 text-sm leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -182,9 +192,11 @@ export default function Compliance() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-card/40 dark:bg-card/20 backdrop-blur-sm rounded-2xl p-6 border border-border"
+              // Aumentado a opacidade do background para garantir melhor contraste
+              className="bg-card/60 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-6 border border-border"
             >
-              <h4 className="text-lg font-semibold text-foreground dark:text-foreground/90 mb-4 flex items-center gap-2">
+              {/* Título com alto contraste */}
+              <h4 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-secondary dark:text-secondary/80" />
                 Serviços Incluídos:
               </h4>
@@ -192,7 +204,8 @@ export default function Compliance() {
                 {complianceItems.map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-secondary dark:bg-secondary/80 rounded-full" />
-                    <span className="text-muted-foreground dark:text-muted-foreground/80 text-sm">{item}</span>
+                    {/* Texto do item da lista com bom contraste */}
+                    <span className="text-foreground/90 dark:text-foreground/80 text-sm font-medium">{item}</span>
                   </div>
                 ))}
               </div>
