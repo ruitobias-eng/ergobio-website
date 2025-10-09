@@ -249,18 +249,19 @@ export default function Layout({ children }) {
 
       {/* === FOOTER === */}
       <footer 
-        // NOVO: Fundo cinza claro no modo claro (bg-muted) e fundo escuro no modo escuro (dark:bg-background/90)
-        // Texto: Escuro no modo claro (text-foreground) e branco no modo escuro (dark:text-white)
+        // ALTO CONTRASTE GARANTIDO
+        // Modo Claro: Fundo Cinza Claro (bg-muted) | Texto: Escuro (text-foreground)
+        // Modo Escuro: Fundo Escuro (dark:bg-background/90) | Texto: Branco Puro (dark:text-white)
         className="bg-muted dark:bg-background/90 text-foreground dark:text-white py-16 border-t border-border mt-24"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-3 gap-12">
           <div>
-            {/* Título com Gradiente: Garante alto contraste em ambos os fundos */}
+            {/* Título com Gradiente: Garante destaque visual em ambos os fundos */}
             <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 bg-clip-text text-transparent">
               ErgoBio
             </h3>
-            {/* Texto Principal: Usa a cor base do footer */}
-            <p className="text-lg leading-relaxed opacity-80 dark:opacity-90">
+            {/* Texto Principal: Opacidade ajustada para manter a legibilidade em ambos os modos */}
+            <p className="text-lg leading-relaxed opacity-90 dark:opacity-90">
               Ergonomia e Saúde Ocupacional para ambientes de trabalho mais humanos, seguros e produtivos.
             </p>
           </div>
@@ -301,8 +302,8 @@ export default function Layout({ children }) {
           </div>
         </div>
 
-        {/* Direitos Autorais */}
-        <div className="mt-12 border-t border-gray-300 dark:border-white/30 pt-6 text-center text-sm opacity-60">
+        {/* Direitos Autorais: Borda de separação ajustada */}
+        <div className="mt-12 border-t border-border dark:border-white/20 pt-6 text-center text-sm opacity-60">
           © 2025 ErgoBio. {t("footer.rights")}
         </div>
       </footer>
