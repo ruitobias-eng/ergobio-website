@@ -135,13 +135,18 @@ export default function Compliance() {
                 </span>
               </motion.div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground dark:text-foreground/90">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground dark:text-foreground/90"
+              >
                 Conformidade{' '}
-                <span className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 bg-clip-text text-transparent">
+                <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste">
                   Legal
                 </span>{' '}
                 Garantida
-              </h2>
+              </motion.h2>
 
               <p className="text-xl text-muted-foreground dark:text-muted-foreground/80 leading-relaxed">
                 A ErgoBio é especialista em assegurar que sua empresa atenda plenamente às 

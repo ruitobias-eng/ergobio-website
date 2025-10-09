@@ -6,7 +6,15 @@ export default {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#1E293B",          // Azul escuro
+        secondary: "#3B82F6",        // Azul claro
+        contraste: "#F97316",        // Laranja forte
+        "primary-foreground": "#FFFFFF",
+        "contraste-foreground": "#FFFFFF",
+      },
+    },
   },
   plugins: [],
 };

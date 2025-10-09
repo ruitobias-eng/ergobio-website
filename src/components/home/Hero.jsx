@@ -62,7 +62,7 @@ export default function Hero() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
               <span className="text-foreground">Soluções em</span>{' '}
-              <span className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary/90 dark:to-contraste/90 bg-clip-text text-transparent">
+              <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste">
                 Ergonomia
               </span>
             </motion.h1>
@@ -95,8 +95,8 @@ export default function Hero() {
                 </div>
                 <span className="text-foreground font-medium dark:text-foreground/90">+30% Produtividade</span>
               </div>
-            </motion.div>
-
+            </motion.div>            
+          
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}

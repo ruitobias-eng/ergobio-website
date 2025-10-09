@@ -53,12 +53,17 @@ export default function About() {
               Especialistas em Ergonomia
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-foreground dark:text-foreground/90">Sobre a </span>
-            <span className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary/80 dark:to-contraste/80 bg-clip-text text-transparent">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+          >
+            <span className="text-foreground dark:text-foreground/90">Sobre a </span>{' '}
+            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste">
               ErgoBio
             </span>
-          </h2>
+          </motion.h2>
           <p className="text-xl md:text-2xl text-muted-foreground dark:text-muted-foreground/80 max-w-4xl mx-auto leading-relaxed">
             Sua parceira estratégica em <strong className="text-foreground dark:text-foreground/90">Ergonomia e Saúde Ocupacional</strong>, 
             liderada pela fisioterapeuta Tatiana Carvalho. Transformamos ambientes de trabalho 

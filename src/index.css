@@ -52,8 +52,8 @@
   --radius: 0.625rem;
 
   /* 🎯 Paleta ErgoBio - Cores Principais */
-  --cor-primaria: #142d4c;      /* Azul marinho profissional */
-  --cor-secundaria: #9fd3c7;    /* Verde água suave */
+  --cor-primaria: #253c58;      /* Azul marinho profissional */
+  --cor-secundaria: #42b69b;    /* Verde água suave */
   --cor-contraste: #f96d00;     /* Laranja energético */
   --cor-texto: #385170;         /* Azul acinzentado para texto */
 
@@ -98,13 +98,13 @@
    =========================================================== */
 .dark {
   /* 🎯 Paleta ErgoBio - Ajustada para contraste no escuro */
-  --cor-primaria: #9fd3c7;                      /* Verde água como primário */
+  --cor-primaria: #67dabf;                      /* Verde água como primário */
   --cor-secundaria: #142d4c;                    /* Azul marinho como secundário */
   --cor-contraste: #ff8c42;                     /* Laranja mais vibrante */
   --cor-texto: #e2e8f0;                         /* Texto claro legível */
 
   /* 🎨 Sistema de Cores Base - Tema Escuro */
-  --background: oklch(0.12 0.02 260);           /* Fundo escuro suave */
+  --background: oklch(27.387% 0.0293 267.572);           /* Fundo escuro suave */
   --foreground: oklch(0.98 0.01 260);           /* Texto claro de alto contraste */
   
   --card: oklch(0.16 0.02 260);                 /* Cards mais claros que o fundo */
