@@ -70,19 +70,20 @@ export default function Layout({ children }) {
     { label: t("nav.partners"), action: () => scrollToSection("parceiros") },
     { label: t("nav.contact"), action: () => scrollToSection("contato") },
   ];
-
-  const dotColor = isDarkMode ? "rgba(255,255,255,0.08)" : "rgba(56,81,112,0.16)";
-  const patternStyle = {
-    backgroundImage: `radial-gradient(${dotColor} 1px, transparent 1px)`,
-    backgroundSize: "18px 18px",
-  };
+  
+  // REMOVIDO: const dotColor e patternStyle
 
   const currentLogo = isDarkMode ? LogoDark : LogoLight;
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
-      {/* Pattern global */}
-      <div aria-hidden className="fixed inset-0 -z-10 pointer-events-none" style={patternStyle} />
+      {/* Pattern global: Agora usa classes CSS bg-dots-dark/light */}
+      <div 
+        aria-hidden 
+        className={`fixed inset-0 -z-10 pointer-events-none ${
+          isDarkMode ? "bg-dots-dark" : "bg-dots-light"
+        }`} 
+      />
 
       {/* === NAVBAR === */}
       <nav
