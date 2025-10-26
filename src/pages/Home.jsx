@@ -3,6 +3,7 @@ import Hero from "../components/home/Hero";
 import Compliance from "../components/home/Compliance";
 import Services from "../components/home/Services";
 import Training from "../components/home/Training";
+import Partners from "../components/home/Partners";
 import About from "../components/home/About";
 import Contact from "../components/home/Contact";
 
@@ -27,6 +28,11 @@ export default function Home() {
       {/* TREINAMENTOS */}
       <section id="treinamentos">
         <Training />
+      </section>
+
+      {/* PARCEIROS */}
+      <section id="parceiros">
+        <Partners />
       </section>
 
       {/* SOBRE NÓS */}

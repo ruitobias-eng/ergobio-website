@@ -57,23 +57,28 @@ export default function Layout({ children }) {
   };
 
   const navLinks = [
-    { 
-      label: t("nav.home"), 
-      action: () => window.scrollTo({ top: 0, behavior: "smooth" }) 
-    },
-    { 
-      label: t("nav.services"), 
-      action: () => scrollToSection("servicos") 
-    },
-    { 
-      label: t("nav.training"), 
-      action: () => scrollToSection("treinamentos") 
-    },
-    { 
-      label: t("nav.contact"), 
-      action: () => scrollToSection("contato") 
-    },
-  ];
+  { 
+    label: t("nav.home"), 
+    action: () => window.scrollTo({ top: 0, behavior: "smooth" }) 
+  },
+  { 
+    label: t("nav.services"), 
+    action: () => scrollToSection("servicos") 
+  },
+  { 
+    label: t("nav.training"), 
+    action: () => scrollToSection("treinamentos") 
+  },
+  { 
+    label: t("nav.partners"), 
+    action: () => scrollToSection("parceiros") 
+  },
+  { 
+    label: t("nav.contact"), 
+    action: () => scrollToSection("contato") 
+  },
+];
+
 
   // Escolhe a logo baseada no tema
   const currentLogo = isDarkMode ? LogoDark : LogoLight;

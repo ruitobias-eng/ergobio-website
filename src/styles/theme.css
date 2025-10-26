@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================
+   🎨 VARIÁVEIS DE COR GLOBAL
+=========================================================== */
+:root {
+  --border: #e2e8f0;
+  --input: #f8fafc;
+  --ring: #3b82f6;
+  --background: #ffffff;
+  --foreground: #111827;
+
+  --cor-primaria: #4f46e5;
+  --primary-foreground: #ffffff;
+  --cor-secundaria: #f59e0b;
+  --secondary-foreground: #000000;
+
+  --card: #f3f4f6;
+  --card-foreground: #111827;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --success: #10b981;
+  --warning: #facc15;
+  --error: #ef4444;
+
+  --radius: 0.5rem;
+
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+
+  /* Gradientes e cores adaptáveis */
+  --cor-contraste: #a855f7;
+  --muted: #e5e7eb;
+}
+
+.dark {
+  --background: #111827;
+  --foreground: #f9fafb;
+
+  --cor-primaria: #6366f1;
+  --primary-foreground: #f9fafb;
+  --cor-secundaria: #fbbf24;
+  --secondary-foreground: #111827;
+
+  --card: #1f2937;
+  --card-foreground: #f9fafb;
+
+  --cor-contraste: #f472b6;
+  --muted: #374151;
+}
+
+/* ===========================================================
+   🎯 GRADIENTES ADAPTATIVOS
+=========================================================== */
+.gradient-light-intense {
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, #1e3a5f 100%);
+}
+
+.gradient-dark-subtle {
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, #2d4a6b 100%);
+}
+
+.text-gradient-ergo {
+  background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-contraste) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-gradient-light {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+}
+
+.card-gradient-dark {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 50%);
+}
+
+/* ===========================================================
+   🚀 OTIMIZAÇÃO E RESPONSIVIDADE
+=========================================================== */
+@media (max-width: 768px) {
+  .blur-3xl {
+    filter: blur(40px);
+  }
+}
+
+@media print {
+  * {
+    @apply text-black bg-white;
+  }
+
+  .bg-gradient-to-r,
+  .backdrop-blur-sm,
+  .backdrop-blur-xl {
+    background: white !important;
+    filter: none !important;
+  }
+
+  .text-gradient-ergo,
+  .bg-clip-text {
+    color: var(--cor-primaria) !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--cor-primaria) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .transition-base,
+  .transition-all,
+  .transition-transform,
+  .transition-colors {
+    transition: none !important;
+  }
+}
+
+.force-light-bg {
+  background-color: oklch(1 0 0) !important;
+}
+
+.force-dark-bg {
+  background-color: oklch(0.12 0.02 260) !important;
+}
+
+.dark img {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+@media (min-width: 1024px) {
+  h1 { @apply text-5xl lg:text-6xl; }
+  h2 { @apply text-4xl lg:text-5xl; }
+}
+
+/* ===========================================================
+   🌀 HOVER EFFECTS
+=========================================================== */
+.hover-lift {
+  @apply transition-transform duration-300 ease-out;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(159, 211, 199, 0.3);
+}
+.dark .hover-glow:hover {
+  box-shadow: 0 0 20px rgba(159, 211, 199, 0.15);
+}
+
+/* ===========================================================
+   🔹 COMPONENTES GLOBAIS
+=========================================================== */
+.section-fit {
+  @apply px-6;
+}
+@media (min-width: 768px) {
+  .section-fit {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-secondary to-contraste text-primary-foreground font-bold py-2 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+.card {
+  @apply bg-card dark:bg-card/90 border border-border rounded-xl p-6 transition-colors duration-300;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(to right, var(--cor-secundaria), var(--cor-contraste));
+}
+
+.bg-dots-light {
+  background-image: radial-gradient(rgba(56,81,112,0.16) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.bg-dots-dark {
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.text-muted-foreground {
+  @apply text-muted-foreground dark:text-muted-foreground/90;
+}
+
+.border-muted {
+  @apply border-border dark:border-border/50;
+}

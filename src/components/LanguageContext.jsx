@@ -6,7 +6,8 @@ const translations = {
     nav: {
       home: "Início",
       services: "Serviços",
-      training: "Treinamentos", 
+      training: "Treinamentos",
+      partners: "Parceiros",
       about: "Sobre Nós",
       contact: "Contato",
       proposal: "Solicitar Proposta",
@@ -17,6 +18,11 @@ const translations = {
       contact: "Fale Conosco",
       compliance: "Conformidade Legal Garantida",
     },
+    partners: {
+      tag: "Parceiros",
+      title: "Nossos Parceiros",
+      description: "Aqui estão os parceiros que confiam em nós",
+    },
     footer: {
       rights: "Todos os direitos reservados.",
     },
@@ -25,8 +31,8 @@ const translations = {
     nav: {
       home: "Home",
       services: "Services",
-      // ADICIONADO: Chave 'training'
-      training: "Training", 
+      training: "Training",
+      partners: "Partners",
       about: "About Us",
       contact: "Contact",
       proposal: "Request a Quote",
@@ -37,6 +43,11 @@ const translations = {
       contact: "Contact Us",
       compliance: "Legal Compliance Guaranteed",
     },
+    partners: {
+      tag: "Partners",
+      title: "Our Partners",
+      description: "Here are the partners who trust us",
+    },
     footer: {
       rights: "All rights reserved.",
     },
@@ -45,8 +56,8 @@ const translations = {
     nav: {
       home: "Inicio",
       services: "Servicios",
-      // ADICIONADO: Chave 'training'
-      training: "Capacitación", // 'Capacitación' is common for training/courses in Spanish
+      training: "Capacitación",
+      partners: "Socios",
       about: "Sobre Nosotros",
       contact: "Contacto",
       proposal: "Solicitar Cotización",
@@ -56,6 +67,11 @@ const translations = {
       services: "Conozca Nuestros Servicios",
       contact: "Contáctenos",
       compliance: "Cumplimiento Legal Garantizado",
+    },
+    partners: {
+      tag: "Socios",
+      title: "Nuestros Socios",
+      description: "Aquí están los socios que confían en nosotros",
     },
     footer: {
       rights: "Todos los derechos reservados.",
