@@ -106,7 +106,7 @@ export default function Hero() {
                 <div className="flex items-center justify-center w-6 h-6 rounded-full bg-contraste/20 dark:bg-contraste/30 border border-gray-300 dark:border-gray-600">
                   <TrendingUp className="w-4 h-4 text-contraste dark:text-contraste" />
                 </div>
-                <span className="text-foreground font-medium dark:text-foreground">+30% Produtividade</span>
+                <span className="text-foreground font-medium dark:text-foreground">+ Produtividade</span>
               </div>
             </motion.div>
 
@@ -170,7 +170,7 @@ export default function Hero() {
                   <TrendingUp className="w-5 h-5 text-secondary dark:text-secondary" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">30%</div>
+                  <div className="text-2xl font-bold text-foreground">+</div>
                   <div className="text-sm text-muted-foreground dark:text-muted-foreground/90">Produtividade</div>
                 </div>
               </div>
