@@ -192,16 +192,16 @@ export default function Layout({ children }) {
       </main>
 
       {/* === FOOTER === */}
-      <footer className="bg-muted dark:bg-background/90 text-foreground py-16 border-t border-border mt-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste bg-clip-text text-transparent">
-            ErgoBio
-          </h3>
-          <p className="text-muted-foreground">
-            © 2025 ErgoBio. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
+        <footer className="bg-muted dark:bg-background/90 text-foreground py-16 border-t border-border mt-24">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste bg-clip-text text-transparent">
+              {t("footer.companyName")}
+            </h3>
+            <p className="text-muted-foreground">
+              {t("footer.copyright")}
+            </p>
+          </div>
+        </footer>
     </div>
   );
 }

@@ -1,263 +1,88 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Award, Target, Heart, Star, Users, TrendingUp } from "lucide-react";
+import { useLanguage } from "@/components/LanguageContext";
+import { Users2, Target, Eye, HeartHandshake } from "lucide-react";
 
 export default function About() {
-  const features = [
-    {
-      icon: Target,
-      text: "Soluções personalizadas e focadas em resultados",
-      gradientLight: "from-blue-600 to-cyan-600",
-      gradientDark: "from-blue-400 to-cyan-400"
-    },
-    {
-      icon: Award,
-      text: "Conformidade garantida com NR-17 e NR-01",
-      gradientLight: "from-green-600 to-emerald-600",
-      gradientDark: "from-green-400 to-emerald-400"
-    },
-    {
-      icon: Heart,
-      text: "Compromisso com saúde e bem-estar",
-      gradientLight: "from-pink-600 to-rose-600",
-      gradientDark: "from-pink-400 to-rose-400"
-    },
-  ];
-
-  const stats = [
-    { number: "50+", label: "Clientes Atendidos", icon: Users },
-    { number: "100%", label: "Conformidade NR-17", icon: Award },
-    { number: "30%", label: "Aumento Produtividade", icon: TrendingUp },
-  ];
+  const { t } = useLanguage();
 
   return (
-    <section id="sobre" className="py-24 bg-background transition-colors overflow-hidden">
-      {/* Background Elements */}
+    <section id="sobre" className="py-24 bg-background transition-colors duration-500 relative overflow-hidden">
+      {/* Efeitos de fundo */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 dark:bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute top-10 left-10 w-72 h-72 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-secondary/10 dark:bg-secondary/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
-        {/* Header Section */}
+        {/* Cabeçalho */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 dark:border-secondary/30 mb-6">
-            <Star className="w-4 h-4 text-secondary dark:text-secondary/80" />
-            <span className="text-sm font-medium text-foreground dark:text-foreground/90">
-              Especialistas em Ergonomia
-            </span>
-          </div>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-secondary/20 dark:border-secondary/30 mb-6"
           >
-            <span className="text-foreground">Sobre a</span>{' '}
-            <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background">
-              ErgoBio
+            <Users2 className="w-4 h-4 text-secondary dark:text-secondary" />
+            <span className="text-sm font-medium text-foreground dark:text-foreground/90">
+              {t("about.tag")}
             </span>
-          </motion.h2>
-          {/* Aumentado o contraste do texto de introdução */}
+          </motion.div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
+            {t("about.title")}
+          </h2>
           <p className="text-xl md:text-2xl text-foreground/80 dark:text-foreground/90 max-w-4xl mx-auto leading-relaxed">
-            Sua parceira estratégica em <strong className="text-foreground">Ergonomia e Saúde Ocupacional</strong>,
-            liderada pela fisioterapeuta Tatiana Carvalho. Transformamos ambientes de trabalho
-            em espaços de saúde, segurança e produtividade.
+            {t("about.text")}
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left Content */}
+        {/* Cards de Missão, Visão e Valores */}
+        <div className="grid md:grid-cols-3 gap-8">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="bg-card/70 dark:bg-card/50 border border-border backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            {/* Features List: Garantido o alto contraste no texto */}
-            <div className="space-y-6">
-              {features.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-start gap-4 p-6 rounded-2xl bg-card dark:bg-card/80 border border-border hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <item.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    {/* Texto mais visível (usando text-foreground ao invés de text-foreground/90) */}
-                    <p className="text-lg font-semibold text-foreground leading-relaxed">
-                      {item.text}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Stats Grid: Ajustado para melhor contraste e legibilidade */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-3 gap-4 pt-6"
-            >
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="text-center p-4 rounded-xl bg-muted/50 dark:bg-muted/30 border border-border hover:shadow-md dark:hover:shadow-lg transition-all duration-300"
-                >
-                  <stat.icon className="w-6 h-6 mx-auto mb-2 text-secondary dark:text-secondary/80" />
-                  {/* Número com alto contraste */}
-                  <div className="text-2xl font-bold text-foreground">{stat.number}</div>
-                  {/* Label mais legível */}
-                  <div className="text-xs text-muted-foreground font-medium dark:text-muted-foreground/90">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
+            <Target className="w-10 h-10 text-secondary dark:text-secondary mb-4" />
+            <h3 className="text-xl font-semibold text-foreground mb-3">
+              {t("about.mission")}
+            </h3>
           </motion.div>
 
-          {/* Right Card - Tatiana (Mantido o componente interno do React/Avatar, mas ajustadas as classes de texto externas) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="relative"
+            className="bg-card/70 dark:bg-card/50 border border-border backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            {/* Main Card */}
-            <div className="relative bg-gradient-to-br from-card to-muted dark:from-card/90 dark:to-muted/50 rounded-3xl p-8 shadow-2xl border border-border overflow-hidden">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-10 dark:opacity-20">
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary to-contraste dark:from-secondary/60 dark:to-contraste/60" />
-              </div>
+            <Eye className="w-10 h-10 text-secondary dark:text-secondary mb-4" />
+            <h3 className="text-xl font-semibold text-foreground mb-3">
+              {t("about.vision")}
+            </h3>
+          </motion.div>
 
-              {/* Content */}
-              <div className="relative z-10 text-center">
-                {/* Avatar (Mantido o container da imagem original por já conter classes de contraste razoáveis) */}
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="rounded-2xl p-8 bg-card/80 dark:bg-card/60 shadow-2xl text-foreground"
-                >
-                  <div className="text-center">
-                    {/* Container da imagem */}
-                    <div className="relative mx-auto mb-6 w-full max-w-sm lg:max-w-md">
-                      <div className="rounded-xl overflow-hidden border border-border bg-card/60 dark:bg-card/50 shadow-lg dark:shadow-xl transition-all duration-500 backdrop-blur-sm">
-                        <img
-                          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68e4284182bd0254fcd95261/0b95cf3db_tatiana.jpg"
-                          alt="Fisioterapeuta Tatiana Carvalho"
-                          loading="lazy"
-                          className="w-full max-h-[560px] object-contain rounded-lg transition-all duration-500"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Ajustado contraste */}
-                    <h3 className="text-3xl font-bold mb-2 text-foreground">Fisioterapeuta Tatiana Carvalho</h3>
-                    <p className="text-xl text-muted-foreground mb-6 dark:text-muted-foreground/90">
-                      Especialista em Ergonomia e Saúde Ocupacional
-                    </p>
-
-                    <div className="border-t border-border pt-6">
-                      {/* Ajustado contraste */}
-                      <p className="text-lg leading-relaxed text-foreground">
-                        Profissional com vasta experiência em soluções ergonômicas corporativas, dedicada a transformar ambientes de trabalho em espaços de saúde, produtividade e bem-estar.
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Name and Title (Classes duplicadas removidas, foco na seção acima para o conteúdo principal) */}
-                {/* As classes a seguir estão fora do card principal da Tatiana e foram removidas para simplificar e focar na visibilidade dentro do card. */}
-                {/*
-                <motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  viewport={{ once: true }}
-                  className="text-2xl md:text-3xl font-bold text-foreground dark:text-foreground/90 mb-2"
-                >
-                  Fisioterapeuta Tatiana Carvalho
-                </motion.h3>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="text-lg text-muted-foreground dark:text-muted-foreground/80 mb-6 font-medium"
-                >
-                  Especialista em Ergonomia e Saúde Ocupacional
-                </motion.p>
-                */}
-
-                {/* Description (Classes duplicadas removidas) */}
-                {/*
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  viewport={{ once: true }}
-                  className="border-t border-border pt-6"
-                >
-                  <p className="text-foreground dark:text-foreground/90 leading-relaxed text-lg">
-                    Profissional com vasta experiência em soluções ergonômicas corporativas,
-                    dedicada a transformar ambientes de trabalho em espaços de saúde,
-                    segurança e alta produtividade.
-                  </p>
-                </motion.div>
-                */}
-
-                {/* Badges: Ajustado o texto para alto contraste dentro do badge secundário */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  viewport={{ once: true }}
-                  className="flex flex-wrap justify-center gap-3 mt-6"
-                >
-                  {["CREFITO", "NR-17", "Saúde Ocupacional"].map((badge, index) => (
-                    <span
-                      key={index}
-                      // Alterado de text-secondary/80 para text-secondary dark:text-foreground para alto contraste
-                      className="px-3 py-1 bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-foreground text-sm font-medium rounded-full border border-secondary/20 dark:border-secondary/30"
-                    >
-                      {badge}
-                    </span>
-                  ))}
-                </motion.div>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute top-4 right-4 w-4 h-4 bg-contraste dark:bg-contraste/60 rounded-full opacity-20 dark:opacity-30" />
-              <div className="absolute bottom-4 left-4 w-6 h-6 bg-secondary dark:bg-secondary/60 rounded-full opacity-20 dark:opacity-30" />
-            </div>
-
-            {/* Floating Element: Garantido que o texto seja sempre claro e visível */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: true }}
-              // Mantido 'text-white' para visibilidade no gradiente
-              className="absolute -top-4 -right-4 bg-gradient-to-r from-contraste to-orange-500 dark:from-contraste/80 dark:to-orange-400 text-white px-4 py-2 rounded-xl shadow-lg font-semibold"
-            >
-              +10 anos Exp.
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-card/70 dark:bg-card/50 border border-border backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <HeartHandshake className="w-10 h-10 text-secondary dark:text-secondary mb-4" />
+            <h3 className="text-xl font-semibold text-foreground mb-3">
+              {t("about.values")}
+            </h3>
           </motion.div>
         </div>
       </div>

@@ -1,72 +1,69 @@
-import React from 'react';
+import React from "react";
 import { motion } from "framer-motion";
 import { Shield, Award, TrendingUp, CheckCircle, FileText, Users } from "lucide-react";
-import complianceImage from '../../img/compliance.png';
+import complianceImage from "../../img/compliance.png";
+import { useLanguage } from "@/components/LanguageContext";
 
 export default function Compliance() {
+  const { t } = useLanguage();
+
   const features = [
-    { 
-      icon: Shield, 
-      title: "Proteção Legal", 
-      desc: "Evite multas e passivos trabalhistas com conformidade total",
+    {
+      icon: Shield,
+      title: t("compliance.features.protection.title"),
+      desc: t("compliance.features.protection.desc"),
       gradientLight: "from-blue-600 to-cyan-600",
-      gradientDark: "from-blue-400 to-cyan-400"
+      gradientDark: "from-blue-400 to-cyan-400",
     },
-    { 
-      icon: Award, 
-      title: "Certificação NR-17", 
-      desc: "Documentação completa e laudos técnicos especializados",
+    {
+      icon: Award,
+      title: t("compliance.features.certification.title"),
+      desc: t("compliance.features.certification.desc"),
       gradientLight: "from-green-600 to-emerald-600",
-      gradientDark: "from-green-400 to-emerald-400"
+      gradientDark: "from-green-400 to-emerald-400",
     },
-    { 
-      icon: TrendingUp, 
-      title: "Melhoria Contínua", 
-      desc: "Transforme obrigações legais em vantagens competitivas",
+    {
+      icon: TrendingUp,
+      title: t("compliance.features.improvement.title"),
+      desc: t("compliance.features.improvement.desc"),
       gradientLight: "from-orange-600 to-amber-600",
-      gradientDark: "from-orange-400 to-amber-400"
+      gradientDark: "from-orange-400 to-amber-400",
     },
-    { 
-      icon: Users, 
-      title: "Segurança dos Colaboradores", 
-      desc: "Ambientes de trabalho mais seguros e produtivos",
+    {
+      icon: Users,
+      title: t("compliance.features.safety.title"),
+      desc: t("compliance.features.safety.desc"),
       gradientLight: "from-purple-600 to-pink-600",
-      gradientDark: "from-purple-400 to-pink-400"
-    }
+      gradientDark: "from-purple-400 to-pink-400",
+    },
   ];
 
-  const complianceItems = [
-    "Laudo Ergonômico completo",
-    "Análise de posto de trabalho",
-    "Adequação às normas regulamentadoras",
-    "Programa de prevenção de LER/DORT",
-    "Treinamentos especializados",
-    "Documentação para auditoria"
-  ];
+  // ✅ Garante que complianceItems seja sempre um array
+  const complianceItemsRaw = t("compliance.list", { returnObjects: true });
+  const complianceItems = Array.isArray(complianceItemsRaw)
+    ? complianceItemsRaw
+    : typeof complianceItemsRaw === "string"
+    ? complianceItemsRaw.split(",").map((item) => item.trim())
+    : [];
 
   return (
     <section id="compliance" className="py-24 relative overflow-hidden">
-      {/* Background Gradient Adaptativo - REMOVIDO FUNDO ESCURO NO TEMA CLARO */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 dark:from-primary/20 dark:via-primary/10 dark:to-secondary/10" />
-      
-      {/* Background Pattern - REDUZIDA OPACIDADE NO TEMA CLARO */}
       <div className="absolute inset-0 opacity-5 dark:opacity-20">
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, var(--foreground) 1px, transparent 0)`,
-            backgroundSize: '32px 32px'
+            backgroundSize: "32px 32px",
           }}
         />
       </div>
 
-      {/* Floating Elements Adaptativos - REDUZIDA OPACIDADE NO TEMA CLARO */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-foreground/3 dark:bg-foreground/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-foreground/5 dark:bg-foreground/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 dark:bg-secondary/10 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -74,19 +71,16 @@ export default function Compliance() {
             viewport={{ once: true }}
             className="relative"
           >
-            {/* Main Image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-gray-200 dark:border-gray-700">
-              <img 
+              <img
                 src={complianceImage}
-                alt="Conformidade Legal NR-17"
+                alt={t("compliance.imageAlt")}
                 loading="lazy"
-                className="w-full h-auto"
+                className="w-full h-auto object-cover"
               />
-              {/* Gradient Overlay Adaptativo - REDUZIDA OPACIDADE NO TEMA CLARO */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent dark:from-primary/20 dark:to-transparent" />
             </div>
 
-            {/* Floating Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -94,10 +88,9 @@ export default function Compliance() {
               viewport={{ once: true }}
               className="absolute -top-4 -right-4 bg-gradient-to-r from-contraste to-orange-600 dark:from-contraste/80 dark:to-orange-500 text-white px-6 py-3 rounded-2xl shadow-2xl font-bold text-lg border border-gray-800 dark:border-gray-200"
             >
-              NR-17
+              {t("compliance.badge")}
             </motion.div>
 
-            {/* Stats Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -106,14 +99,19 @@ export default function Compliance() {
               className="absolute -bottom-6 -left-6 bg-background/95 dark:bg-background/90 backdrop-blur-xl rounded-2xl p-6 shadow-2xl border border-gray-300 dark:border-gray-600"
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-foreground mb-1">100%</div>
-                <div className="text-sm text-muted-foreground dark:text-muted-foreground/90 font-medium">Conformidade</div>
-                <div className="text-xs text-muted-foreground dark:text-muted-foreground/90">Garantida</div>
+                <div className="text-3xl font-bold text-foreground mb-1">
+                  {t("compliance.stats.percent")}
+                </div>
+                <div className="text-sm font-semibold text-secondary dark:text-secondary/80">
+                  {t("compliance.stats.title")}
+                </div>
+                <div className="text-xs text-muted-foreground dark:text-muted-foreground/90">
+                  {t("compliance.stats.subtitle")}
+                </div>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Content Section */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -121,7 +119,6 @@ export default function Compliance() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* Header */}
             <div className="space-y-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -132,72 +129,68 @@ export default function Compliance() {
               >
                 <FileText className="w-4 h-4 text-foreground dark:text-foreground/80" />
                 <span className="text-sm font-medium text-foreground dark:text-foreground/90">
-                  Conformidade Legal
+                  {t("compliance.headerTag")}
                 </span>
               </motion.div>
 
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground"
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground"
               >
-                Conformidade{' '}
-                <span className="px-3 py-1 rounded-lg bg-secondary text-white dark:bg-contraste dark:text-background border border-gray-800 dark:border-gray-200">
-                  Legal
-                </span>{' '}
-                Garantida
+                {t("compliance.title")}
               </motion.h2>
 
-              <p className="text-xl text-foreground/80 dark:text-foreground/90 leading-relaxed">
-                A ErgoBio é especialista em assegurar que sua empresa atenda plenamente às 
-                exigências da <strong className="text-foreground">NR-17 e NR-01</strong>, transformando 
-                obrigações legais em oportunidades de melhoria contínua para a saúde e 
-                produtividade dos seus colaboradores.
+              <p className="text-lg text-foreground/80 dark:text-foreground/90 leading-relaxed">
+                {t("compliance.description")}
               </p>
             </div>
 
-            {/* Features Grid */}
             <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((item, index) => (
+              {features.map((item, idx) => (
                 <motion.div
-                  key={index}
+                  key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-card/50 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-300 dark:border-gray-600 hover:bg-card/70 dark:hover:bg-card/70 transition-all duration-300 group"
+                  className="flex items-start gap-4"
                 >
-                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} mb-4 group-hover:scale-110 transition-transform duration-300 border border-gray-800 dark:border-gray-200`}>
-                    <item.icon className="w-6 h-6 text-white" />
+                  <div
+                    className={`p-3 rounded-xl bg-gradient-to-r ${item.gradientLight} dark:${item.gradientDark} text-white shadow-lg border border-gray-800 dark:border-gray-200`}
+                  >
+                    <item.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground dark:text-muted-foreground/90 text-sm leading-relaxed">{item.desc}</p>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground dark:text-muted-foreground/90">
+                      {item.desc}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* Compliance List */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="bg-card/40 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-300 dark:border-gray-600"
-            >
+            <div className="pt-6">
               <h4 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-secondary dark:text-secondary/80" />
-                Serviços Incluídos:
+                <CheckCircle className="w-5 h-5 text-secondary" />
+                {t("compliance.listTitle")}
               </h4>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {complianceItems.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-secondary dark:bg-secondary/80 rounded-full border border-gray-800 dark:border-gray-200" />
-                    <span className="text-foreground/90 dark:text-foreground/80 text-sm font-medium">{item}</span>
-                  </div>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {complianceItems.map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-3 text-foreground/90 dark:text-foreground"
+                  >
+                    <div className="w-2 h-2 bg-secondary rounded-full" />
+                    {item}
+                  </li>
                 ))}
-              </div>
-            </motion.div>
+              </ul>
+            </div>
           </motion.div>
         </div>
       </div>
