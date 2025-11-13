@@ -17,7 +17,13 @@ export const LanguageProvider = ({ children }) => {
         partners: "Parceiros",
         about: "Sobre Nós",
         contact: "Contato",
-        proposal: "Solicitar Proposta"
+        proposal: "Solicitar Proposta",
+        menu: "Menu",
+        theme: "Tema",
+        themeSystem: "Sistema",
+        themeLight: "Claro",
+        themeDark: "Escuro",
+        language: "Idioma"
       },
 
       hero: {
@@ -264,9 +270,9 @@ export const LanguageProvider = ({ children }) => {
         },
       },
       footer: {
-      copyright: "© 2025 ErgoBio. Todos os direitos reservados.",
-      companyName: "ErgoBio"
-    },
+        copyright: "© 2025 ErgoBio. Todos os direitos reservados.",
+        companyName: "ErgoBio"
+      },
     },
 
     // ===========================
@@ -280,7 +286,13 @@ export const LanguageProvider = ({ children }) => {
         partners: "Partners",
         about: "About Us",
         contact: "Contact",
-        proposal: "Request Quote"
+        proposal: "Request Quote",
+        menu: "Menu",
+        theme: "Theme",
+        themeSystem: "System",
+        themeLight: "Light",
+        themeDark: "Dark",
+        language: "Language"
       },
 
       hero: {
@@ -525,10 +537,9 @@ export const LanguageProvider = ({ children }) => {
         },
       },
       footer: {
-      copyright: "© 2025 ErgoBio. All rights reserved.",
-      companyName: "ErgoBio"
-    },
-
+        copyright: "© 2025 ErgoBio. All rights reserved.",
+        companyName: "ErgoBio"
+      },
     },
 
     // ===========================
@@ -542,7 +553,13 @@ export const LanguageProvider = ({ children }) => {
         partners: "Socios",
         about: "Sobre Nosotros",
         contact: "Contacto",
-        proposal: "Solicitar Cotización"
+        proposal: "Solicitar Cotización",
+        menu: "Menú",
+        theme: "Tema",
+        themeSystem: "Sistema",
+        themeLight: "Claro",
+        themeDark: "Oscuro",
+        language: "Idioma"
       },
 
       hero: {
@@ -573,7 +590,7 @@ export const LanguageProvider = ({ children }) => {
         features: {
           protection: {
             title: "Protección Legal",
-            desc: "Evite multas y pasivos laborales con cumplimiento total.",
+            desc: "Evite multas e pasivos laborales con cumplimiento total.",
           },
           certification: {
             title: "Certificación NR-17",
@@ -787,9 +804,9 @@ export const LanguageProvider = ({ children }) => {
         },
       },
       footer: {
-      copyright: "© 2025 ErgoBio. Todos los derechos reservados.",
-      companyName: "ErgoBio"
-    },
+        copyright: "© 2025 ErgoBio. Todos los derechos reservados.",
+        companyName: "ErgoBio"
+      },
     },
   };
 

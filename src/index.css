@@ -45,23 +45,20 @@
 
 /* ===========================================================
    🌐 ERGOBIO DESIGN SYSTEM – VISIBILIDADE APRIMORADA
-   Tema Claro → texto escuro e contrastante (baseado no logo)
-   Tema Escuro → texto claro e confortável (baseado no logo)
    =========================================================== */
 
-/* === Tema Claro === */
 :root {
   --radius: 0.625rem;
 
-  /* Paleta principal ajustada ao logo: Dark Charcoal, Teal, Laranja */
-  --cor-primaria: #343A40;       /* Dark Charcoal (Texto do logo) */
-  --cor-secundaria: #00A79D;     /* Teal Profissional (Novo Secundário) */
-  --cor-contraste: #ff6b00;      /* Laranja Vivo (Acento do logo) */
-  --cor-texto: #343A40;          /* Texto principal */
+  /* Paleta principal ajustada ao logo */
+  --cor-primaria: #343A40;       /* Dark Charcoal */
+  --cor-secundaria: #00A79D;     /* Teal Profissional */
+  --cor-contraste: #ff6b00;      /* Laranja Vivo */
+  --cor-texto: #343A40;
 
   /* Fundo e superfície */
-  --background: #f8fafc;         /* Quase branco (leve tom frio) */
-  --foreground: #343A40;         /* Texto principal (Dark Charcoal) */
+  --background: #f8fafc;
+  --foreground: #343A40;
   --card: #ffffff;
   --card-foreground: #343A40;
   --popover: #ffffff;
@@ -91,20 +88,18 @@
 
 /* === Tema Escuro === */
 .dark {
-  /* Paleta principal ajustada ao logo: Light Slate, Bright Teal, Laranja Suave */
-  --cor-primaria: #AAB8C2;       /* Light Slate (Light Primary) */
-  --cor-secundaria: #00D4C7;     /* Bright Teal (Bright Secondary) */
-  --cor-contraste: #FF984C;      /* Laranja Suave (Acento do logo) */
-  --cor-texto: #e2e8f0;          /* Texto claro e suave */
+  --cor-primaria: #AAB8C2;
+  --cor-secundaria: #00D4C7;
+  --cor-contraste: #FF984C;
+  --cor-texto: #e2e8f0;
 
-  --background: #0f172a;         /* Azul marinho profundo */
+  --background: #0f172a;
   --foreground: #f8fafc;
   --card: #1e293b;
   --card-foreground: #f8fafc;
   --popover: #1e293b;
   --popover-foreground: #f8fafc;
 
-  /* Elementos */
   --primary: var(--cor-primaria);
   --primary-foreground: #0f172a;
   --secondary: var(--cor-secundaria);
@@ -118,7 +113,6 @@
   --input: #334155;
   --ring: var(--cor-secundaria);
 
-  /* Gráficos */
   --chart-1: #60a5fa;
   --chart-2: #34d399;
   --chart-3: #fbbf24;
@@ -143,7 +137,6 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', 'Poppins', system-ui, sans-serif;
     line-height: 1.6;
-    font-feature-settings: 'kern' 1, 'liga' 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -181,37 +174,11 @@
     transform: translateY(-2px);
   }
 
-  .gradient-primary {
-    /* Gradiente Dark Charcoal */
-    background: linear-gradient(135deg, var(--cor-primaria) 0%, #4c5563 100%); 
-  }
-
-  .gradient-secondary {
-    /* Gradiente Teal */
-    background: linear-gradient(135deg, var(--cor-secundaria) 0%, #5dccb7 100%);
-  }
-
-  .gradient-accent {
-    /* Gradiente Laranja */
-    background: linear-gradient(135deg, var(--cor-contraste) 0%, #ff9a62 100%);
-  }
-
   .gradient-text {
-    /* Combinação Secondary/Accent */
     background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-contraste) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
-  .glow-overlay {
-    background: linear-gradient(
-      45deg,
-      rgba(0, 167, 157, 0.15) 0%, /* Teal */
-      rgba(255, 107, 0, 0.1) 50%, /* Laranja */
-      rgba(52, 58, 64, 0.05) 100% /* Dark Charcoal */
-    );
-    mix-blend-mode: overlay;
   }
 
   .glass-effect {
@@ -224,39 +191,38 @@
            focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
   }
 
-  .btn-secondary {
-    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-xl font-semibold
-           hover:shadow-lg transition-all duration-300 transform hover:scale-105
-           focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  /* === BACKGROUND DOTS CRÍTICO === */
+  .bg-dots-light {
+    background-image: radial-gradient(rgba(56, 81, 112, 0.16) 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 
-  .btn-accent {
-    @apply bg-accent text-accent-foreground px-6 py-3 rounded-xl font-semibold
-           hover:shadow-lg transition-all duration-300 transform hover:scale-105
-           focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  .bg-dots-dark {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 
- /* ===== Background Pontinhos Responsivo ===== */
-.background-dots {
-    /* TEMA CLARO: Sutil, baseado na borda */
-    --dot-color: var(--border);
-    --dot-size: 14px; /* Aumentado de 12px para 14px */
-    --dot-spacing: 38px; /* Aumentado de 36px para 38px */
-
-    background-image: radial-gradient(circle, var(--dot-color) var(--dot-size), transparent var(--dot-size));
-    background-size: var(--dot-spacing) var(--dot-spacing);
+  /* === DEBUG: FORÇAR VISIBILIDADE DO MENU MOBILE === */
+  .debug-hamburger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 2px solid #ef4444 !important;
+    background: #fef3c7 !important;
+    color: #000 !important;
+    position: relative !important;
+    z-index: 100 !important;
   }
 
-  .dark .background-dots {
-    /* TEMA ESCURO: Destaque, usando o Teal */
-    --dot-color: var(--cor-secundaria);
-  }
-
-  @media (max-width: 768px) {
-    .background-dots {
-      --dot-size: 2px;
-      --dot-spacing: 12px;
-    }
+  .debug-hamburger::after {
+    content: "MENU";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #ef4444;
+    font-weight: bold;
   }
 }
 
@@ -269,31 +235,30 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes slide-in-left {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-
-  @keyframes pulse-glow {
-    /* Ajustado para usar o Secondary Teal */
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 167, 157, 0.3); } 
-    50% { box-shadow: 0 0 30px rgba(0, 167, 157, 0.6); }
-  }
-
   .animate-fade-in-up { animation: fade-in-up 0.6s ease-out; }
-  .animate-slide-in-left { animation: slide-in-left 0.6s ease-out; }
-  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
-
-  .transition-base { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
   .hover-lift { @apply transition-transform duration-300 hover:-translate-y-1; }
 }
 
 /* ===========================================================
-   📱 Responsividade e Acessibilidade
+   📱 RESPONSIVIDADE CRÍTICA PARA MOBILE
    =========================================================== */
+@media (max-width: 767px) {
+  /* FORÇAR visibilidade do botão hamburger em mobile */
+  .md\:hidden {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Garantir que o menu mobile tenha z-index alto */
+  .fixed.z-50 {
+    z-index: 9999 !important;
+  }
+}
+
+/* Acessibilidade */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -303,11 +268,7 @@
   }
 }
 
-@screen xs {
-  .container-custom { @apply px-4; }
-}
-
-/* 🖥 Scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { @apply bg-muted; }
 ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
@@ -315,13 +276,3 @@
 
 .dark ::-webkit-scrollbar-thumb { @apply bg-border; }
 .dark ::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/50; }
-
-/* 🎯 Foco acessível */
-.focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
-
-/* 🖨 Impressão */
-@media print {
-  .no-print { display: none !important; }
-  body { @apply text-black bg-white; }
-  h1, h2, h3, h4, h5, h6 { @apply text-black; }
-}

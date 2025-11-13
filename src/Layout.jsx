@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/components/LanguageContext";
+import { useTheme } from "@/components/ThemeContext"; // ← Importe o useTheme
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Monitor } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import MobileMenu from "@/components/MobileMenu";
 
 import LogoLight from "@/img/logoErgo00.png";
 import LogoDark from "@/img/logoErgo02.png";
@@ -10,11 +12,11 @@ import LogoDark from "@/img/logoErgo02.png";
 export default function Layout({ children }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [navHeight, setNavHeight] = useState(0);
   const navRef = useRef(null);
 
   const { language, setLanguage, t } = useLanguage();
+  const { theme, setTheme } = useTheme(); // ← Use o ThemeContext
 
   // Atualiza a altura da navbar dinamicamente
   useEffect(() => {
@@ -25,26 +27,6 @@ export default function Layout({ children }) {
     window.addEventListener("resize", updateNavHeight);
     return () => window.removeEventListener("resize", updateNavHeight);
   }, []);
-
-  // Detecta o tema salvo ou preferência do sistema
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-      document.documentElement.classList.add("dark");
-      setIsDarkMode(true);
-    } else {
-      document.documentElement.classList.remove("dark");
-      setIsDarkMode(false);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = isDarkMode ? "light" : "dark";
-    document.documentElement.classList.toggle("dark", !isDarkMode);
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem("theme", newTheme);
-  };
 
   // Detecta scroll
   useEffect(() => {
@@ -68,16 +50,47 @@ export default function Layout({ children }) {
     { label: t("nav.services"), action: () => scrollToSection("servicos") },
     { label: t("nav.training"), action: () => scrollToSection("treinamentos") },
     { label: t("nav.partners"), action: () => scrollToSection("parceiros") },
+    { label: t("nav.about"), action: () => scrollToSection("sobre") },
     { label: t("nav.contact"), action: () => scrollToSection("contato") },
   ];
-  
-  // REMOVIDO: const dotColor e patternStyle
 
-  const currentLogo = isDarkMode ? LogoDark : LogoLight;
+  // Determina qual logo usar baseado no tema atual
+  const getCurrentLogo = () => {
+    const currentTheme = theme === 'system' 
+      ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : theme;
+    
+    return currentTheme === 'dark' ? LogoDark : LogoLight;
+  };
+
+  const currentLogo = getCurrentLogo();
+
+  // Função para obter o ícone do tema atual
+  const getThemeIcon = () => {
+    switch (theme) {
+      case 'dark':
+        return <Moon className="w-5 h-5 text-blue-400" />;
+      case 'light':
+        return <Sun className="w-5 h-5 text-amber-500" />;
+      default:
+        return <Monitor className="w-5 h-5 text-green-500" />;
+    }
+  };
+
+  // Função para ciclar entre temas
+  const cycleTheme = () => {
+    const themes = ['system', 'light', 'dark'];
+    const currentIndex = themes.indexOf(theme);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    setTheme(themes[nextIndex]);
+  };
+
+  // Determina se está no modo escuro para o pattern background
+  const isDarkMode = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500">
-      {/* Pattern global: Agora usa classes CSS bg-dots-dark/light */}
+      {/* Pattern global */}
       <div 
         aria-hidden 
         className={`fixed inset-0 -z-10 pointer-events-none ${
@@ -102,7 +115,7 @@ export default function Layout({ children }) {
               className="transition-all hover:opacity-80 flex items-center hover:scale-105 duration-300"
             >
               <motion.img
-                key={isDarkMode ? "dark" : "light"}
+                key={theme} // Muda a key quando o tema muda para forçar animação
                 initial={{ opacity: 0.5 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -113,44 +126,34 @@ export default function Layout({ children }) {
             </button>
 
             {/* LINKS DESKTOP */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               {navLinks.map((link, index) => (
                 <motion.button
                   key={index}
                   onClick={link.action}
-                  className="text-foreground hover:text-secondary font-semibold text-[15px] tracking-wide transition-all"
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="text-foreground hover:text-secondary font-medium text-sm tracking-wide transition-all px-3 py-2 rounded-lg hover:bg-muted/50"
+                  whileHover={{ scale: 1.05, y: -1 }}
                 >
                   {link.label}
                 </motion.button>
               ))}
 
-              {/* BOTÃO DE TEMA */}
+              {/* BOTÃO DE TEMA - Agora cicla entre system/light/dark */}
               <motion.button
-                onClick={toggleTheme}
+                onClick={cycleTheme}
                 className="flex items-center justify-center p-2 rounded-xl bg-muted hover:bg-muted/80 dark:bg-muted/80 dark:hover:bg-muted/60 transition-all"
-                whileTap={{ scale: 0.9, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                title={`Tema: ${theme === 'system' ? 'Sistema' : theme === 'light' ? 'Claro' : 'Escuro'}`}
               >
                 <AnimatePresence mode="wait" initial={false}>
-                  {isDarkMode ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                    >
-                      <Sun className="w-5 h-5 text-amber-500" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                    >
-                      <Moon className="w-5 h-5 text-primary" />
-                    </motion.div>
-                  )}
+                  <motion.div
+                    key={theme}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 1.2, opacity: 0 }}
+                  >
+                    {getThemeIcon()}
+                  </motion.div>
                 </AnimatePresence>
               </motion.button>
 
@@ -158,7 +161,7 @@ export default function Layout({ children }) {
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="bg-card border border-secondary/50 text-foreground rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-secondary/50 transition-all"
+                className="bg-card border border-border text-foreground rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-secondary/50 transition-all"
               >
                 <option value="pt-BR">🇧🇷 PT</option>
                 <option value="en">🇺🇸 EN</option>
@@ -176,8 +179,12 @@ export default function Layout({ children }) {
 
             {/* BOTÃO MOBILE */}
             <motion.button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-foreground p-2 bg-card/80 dark:bg-card/70 rounded-xl border border-border"
+              onClick={() => {
+                console.log("🍔 Hamburger clicado! Estado:", isMobileMenuOpen);
+                console.log("📱 Largura da tela:", window.innerWidth);
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+              }}
+              className="md:hidden text-foreground p-3 rounded-xl border border-border bg-background hover:bg-muted transition-colors"
               whileTap={{ scale: 0.9 }}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -186,22 +193,33 @@ export default function Layout({ children }) {
         </div>
       </nav>
 
+      {/* MOBILE MENU - Atualize para receber theme e setTheme */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        navLinks={navLinks}
+        theme={theme}
+        setTheme={setTheme}
+        language={language}
+        setLanguage={setLanguage}
+      />
+
       {/* === CONTEÚDO PRINCIPAL === */}
-      <main className="transition-all duration-300">
+      <main className="transition-all duration-300 pt-20">
         {children}
       </main>
 
       {/* === FOOTER === */}
-        <footer className="bg-muted dark:bg-background/90 text-foreground py-16 border-t border-border mt-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste bg-clip-text text-transparent">
-              {t("footer.companyName")}
-            </h3>
-            <p className="text-muted-foreground">
-              {t("footer.copyright")}
-            </p>
-          </div>
-        </footer>
+      <footer className="bg-muted dark:bg-background/90 text-foreground py-16 border-t border-border mt-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-secondary to-contraste bg-clip-text text-transparent">
+            {t("footer.companyName")}
+          </h3>
+          <p className="text-muted-foreground">
+            {t("footer.copyright")}
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
