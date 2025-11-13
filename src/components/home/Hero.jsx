@@ -47,8 +47,8 @@ export default function Hero() {
       <div className="absolute top-1/4 -left-10 w-48 h-48 bg-gradient-to-r from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/15 rounded-full blur-2xl opacity-40 dark:opacity-30 animate-pulse" />
       <div className="absolute bottom-1/4 -right-10 w-48 h-48 bg-gradient-to-r from-contraste/20 to-primary/20 dark:from-contraste/10 dark:to-primary/10 rounded-full blur-2xl opacity-40 dark:opacity-30 animate-pulse delay-1000" />
 
-      {/* Conteúdo principal */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 lg:px-8 w-full">
+      {/* Conteúdo principal - Removido padding vertical extra */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Texto */}
           <motion.div
