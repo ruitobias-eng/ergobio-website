@@ -452,7 +452,7 @@ export const LanguageProvider = ({ children }) => {
         featuresTitle: "Covered Topics:",
         benefitsTitle: "Benefits:",
         stats: [
-          { number: "50+", label: "Employees Trained" },
+          { number: "***", label: "Employees Trained" },
           { number: "***", label: "Participant Satisfaction" },
           { number: "***", label: "RSI/DORT Reduction" },
         ],
@@ -719,7 +719,7 @@ export const LanguageProvider = ({ children }) => {
         featuresTitle: "Temas Abordados:",
         benefitsTitle: "Beneficios:",
         stats: [
-          { number: "50+", label: "Colaboradores Capacitados" },
+          { number: "***", label: "Colaboradores Capacitados" },
           { number: "***", label: "Satisfacción de los Participantes" },
           { number: "***", label: "Reducción de LER/DORT" },
         ],
