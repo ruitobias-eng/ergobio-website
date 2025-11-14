@@ -30,7 +30,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[70vh] pt-2 lg:pt-4 pb-20 overflow-hidden">
+    <section className="relative min-h-[70vh] pt-1 lg:pt-2 pb-20 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0" style={patternStyle} />
