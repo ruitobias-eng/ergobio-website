@@ -108,7 +108,7 @@ export const LanguageProvider = ({ children }) => {
             "Aumento da produtividade",
             "Conformidade legal",
           ],
-          aprTitle: "Avaliação Preliminar de Risco (APR)",
+          aprTitle: "Avaliação Ergonômica Preliminar (AER)",
           aprDesc:
             "A APR é uma ferramenta essencial para a identificação rápida e inicial de riscos ergonômicos.",
           aprFeat: [
@@ -377,9 +377,9 @@ export const LanguageProvider = ({ children }) => {
             "Increased productivity",
             "Legal compliance",
           ],
-          aprTitle: "Preliminary Risk Assessment (PRA)",
+          aprTitle: "Preliminary Ergonomic Assessment (ERA)",
           aprDesc:
-            "The PRA is an essential tool for quick and initial identification of ergonomic risks.",
+            "The ERA is an essential tool for quick and initial identification of ergonomic risks.",
           aprFeat: [
             "Risk identification",
             "Action prioritization",
@@ -644,9 +644,9 @@ export const LanguageProvider = ({ children }) => {
             "Aumento de productividad",
             "Conformidad legal",
           ],
-          aprTitle: "Evaluación Preliminar de Riesgo (EPR)",
+          aprTitle: "Evaluación Ergonómica Preliminar (EEP)",
           aprDesc:
-            "La EPR es una herramienta esencial para la identificación rápida e inicial de riesgos ergonómicos.",
+            "La EEP es una herramienta esencial para la identificación rápida e inicial de riesgos ergonómicos.",
           aprFeat: [
             "Identificación de riesgos",
             "Priorización de acciones",
