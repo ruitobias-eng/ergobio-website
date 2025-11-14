@@ -30,8 +30,11 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+
+        {/* NAVBAR MAIS COMPACTA */}
+        <div className="flex justify-between items-center h-14 lg:h-16 py-0">
+
+          {/* Logo menor */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -40,35 +43,35 @@ export default function Header() {
             <img 
               src="/src/img/logo_ok.png" 
               alt="Ergobio" 
-              className="h-8 w-auto"
+              className="h-6 w-auto"
             />
           </motion.div>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-200 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-200 px-2 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Language Switcher - Desktop */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Language Switcher + Botão Contato */}
+          <div className="hidden md:flex items-center space-x-3">
             <LanguageSwitcher />
             <Button
               onClick={() => scrollToSection("contato")}
-              className="bg-secondary hover:bg-secondary/90 text-white"
+              className="bg-secondary hover:bg-secondary/90 text-white px-3 py-1.5 text-sm"
             >
               {t("header.contact", "Contato")}
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu */}
           <div className="flex md:hidden items-center space-x-2">
             <LanguageSwitcher />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -77,25 +80,23 @@ export default function Header() {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
+
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col h-full">
-                  {/* Header */}
+
+                  {/* Mobile Header */}
                   <div className="flex items-center justify-between pb-6 border-b border-gray-200 dark:border-gray-700">
                     <img 
                       src="/src/img/logo_ok.png" 
                       alt="Ergobio" 
-                      className="h-8 w-auto"
+                      className="h-6 w-auto"
                     />
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setIsOpen(false)}
-                    >
+                    <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                       <X className="h-6 w-6" />
                     </Button>
                   </div>
 
-                  {/* Menu Items */}
+                  {/* Mobile Menu Items */}
                   <nav className="flex-1 py-6">
                     <div className="space-y-4">
                       {menuItems.map((item) => (
@@ -110,7 +111,7 @@ export default function Header() {
                     </div>
                   </nav>
 
-                  {/* Footer */}
+                  {/* Mobile Footer */}
                   <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
                     <Button
                       onClick={() => scrollToSection("contato")}
@@ -119,10 +120,12 @@ export default function Header() {
                       {t("header.contact", "Solicitar Proposta")}
                     </Button>
                   </div>
+
                 </div>
               </SheetContent>
             </Sheet>
           </div>
+
         </div>
       </div>
     </header>
