@@ -48,8 +48,8 @@ export default function Services() {
     },
     {
       icon: AlertTriangle,
-      title: t("services.items.aprTitle") || "Avaliação Preliminar de Risco (APR)",
-      description: t("services.items.aprDesc") || "A APR é uma ferramenta essencial para a identificação rápida e inicial de riscos ergonômicos.",
+      title: t("services.items.aprTitle") || "Avaliação Ergonômica Preliminar (AEP)",
+      description: t("services.items.aprDesc") || "A AEP é uma ferramenta essencial para a identificação rápida e inicial de riscos ergonômicos.",
       image: aprImage,
       gradientLight: "from-orange-600 to-amber-600",
       gradientDark: "from-orange-400 to-amber-400",
