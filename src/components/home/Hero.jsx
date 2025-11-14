@@ -30,7 +30,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[70vh] pt-2 lg:pt-4 pb-20 overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0" style={patternStyle} />
@@ -202,29 +202,22 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator - Menor */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer"
-        style={{ opacity: 1 }}
-        onClick={handleScrollDown}
-      >
-        <div className="w-5 h-8 rounded-full flex justify-center border border-gray-800 dark:border-gray-200 bg-background/50 dark:bg-background/50">
-          <motion.div
-            className="w-1 h-1 rounded-full mt-2 bg-gray-800 dark:bg-gray-200"
-            animate={{
-              y: [0, 8, 0],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-            }}
-          />
-        </div>
-      </motion.div>
+     {/* Scroll Indicator - 100% isolado */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="absolute bottom-10 lg:bottom-12 left-1/2 -translate-x-1/2 cursor-pointer"
+          onClick={handleScrollDown}
+        >
+          <div className="w-5 h-8 rounded-full flex justify-center border border-gray-800 dark:border-gray-200 bg-background/60 dark:bg-background/40 backdrop-blur-sm">
+            <motion.div
+              className="w-1 h-1 rounded-full mt-2 bg-gray-800 dark:bg-gray-200"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
     </section>
   );
 }
