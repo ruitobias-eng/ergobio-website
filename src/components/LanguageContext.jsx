@@ -108,7 +108,7 @@ export const LanguageProvider = ({ children }) => {
             "Aumento da produtividade",
             "Conformidade legal",
           ],
-          aprTitle: "Avaliação Ergonômica Preliminar (AER)",
+          aprTitle: "Avaliação Ergonômica Preliminar (AEP)",
           aprDesc:
             "A APR é uma ferramenta essencial para a identificação rápida e inicial de riscos ergonômicos.",
           aprFeat: [
