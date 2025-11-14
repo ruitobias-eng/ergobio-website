@@ -22,6 +22,7 @@ export default function Training() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +39,7 @@ export default function Training() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 dark:bg-secondary/20 border border-gray-300 dark:border-gray-600 mb-6"
           >
             <GraduationCap className="w-4 h-4 text-secondary dark:text-secondary" />
-            <span className="text-sm font-medium text-foreground dark:text-foreground">
+            <span className="text-sm font-medium text-foreground">
               {t("training.tag")}
             </span>
           </motion.div>
@@ -79,7 +80,7 @@ export default function Training() {
                 viewport={{ once: true }}
                 className="text-center bg-card/70 dark:bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-300 dark:border-gray-600 hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
               >
-                <Icon className="w-8 h-8 mx-auto mb-3 text-secondary dark:text-secondary" />
+                <Icon className="w-8 h-8 mx-auto mb-3 text-secondary" />
                 <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">
                   {stat.number}
                 </div>
@@ -95,10 +96,12 @@ export default function Training() {
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {trainings.map((training, index) => {
             const Icon = [GraduationCap, Presentation][index] || GraduationCap;
+
             const gradientLight =
               index === 0
                 ? "from-blue-600 to-cyan-600"
                 : "from-purple-600 to-pink-600";
+
             const gradientDark =
               index === 0
                 ? "from-blue-400 to-cyan-400"
@@ -113,25 +116,29 @@ export default function Training() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <Card className="h-full border border-gray-300 dark:border-gray-600 bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-[1.02] group-hover:-translate-y-1">
-                  <CardHeader className="pb-4">
+                <Card className="h-full flex flex-col justify-between border border-gray-300 dark:border-gray-600 bg-card/70 dark:bg-card/50 backdrop-blur-sm overflow-hidden hover:shadow-2xl dark:hover:shadow-xl transition-all duration-500 rounded-3xl group-hover:scale-[1.02] group-hover:-translate-y-1">
+                  
+                  <CardHeader className="pb-4 pt-6 px-6">
                     <div className="flex items-start gap-4 mb-4">
                       <div
                         className={`p-4 rounded-xl bg-gradient-to-r ${gradientLight} dark:${gradientDark} shadow-lg group-hover:scale-110 transition-transform duration-300 border border-gray-800 dark:border-gray-200`}
                       >
                         <Icon className="w-8 h-8 text-white" />
                       </div>
+
                       <div className="flex-1">
                         <h3 className="text-2xl font-bold text-foreground mb-2">
                           {training.title}
                         </h3>
+
                         <div className="flex flex-wrap gap-3">
-                          <div className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
-                            <Clock className="w-4 h-4 text-secondary dark:text-secondary" />
+                          <div className="flex items-center gap-2 text-sm text-foreground/80">
+                            <Clock className="w-4 h-4 text-secondary" />
                             {training.duration}
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90">
-                            <Users className="w-4 h-4 text-secondary dark:text-secondary" />
+
+                          <div className="flex items-center gap-2 text-sm text-foreground/80">
+                            <Users className="w-4 h-4 text-secondary" />
                             {training.audience}
                           </div>
                         </div>
@@ -139,24 +146,26 @@ export default function Training() {
                     </div>
                   </CardHeader>
 
-                  <CardContent className="space-y-6">
+                  <CardContent className="px-6 pb-6 space-y-6 flex-1 flex flex-col justify-between">
+                    
                     <p className="text-foreground/80 dark:text-foreground/90 leading-relaxed text-lg">
                       {training.description}
                     </p>
 
                     <div className="grid sm:grid-cols-2 gap-6">
+                      
                       <div>
                         <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-secondary dark:text-secondary" />
+                          <CheckCircle2 className="w-4 h-4 text-secondary" />
                           {t("training.featuresTitle")}
                         </h4>
                         <ul className="space-y-2">
                           {training.features.map((feature, idx) => (
                             <li
                               key={idx}
-                              className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90"
+                              className="flex items-center gap-2 text-sm text-foreground/80"
                             >
-                              <div className="w-1.5 h-1.5 bg-secondary dark:bg-secondary rounded-full border border-gray-800 dark:border-gray-200" />
+                              <div className="w-1.5 h-1.5 bg-secondary rounded-full border border-gray-800 dark:border-gray-200" />
                               {feature}
                             </li>
                           ))}
@@ -165,16 +174,16 @@ export default function Training() {
 
                       <div>
                         <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide flex items-center gap-2">
-                          <Star className="w-4 h-4 text-contraste dark:text-contraste" />
+                          <Star className="w-4 h-4 text-contraste" />
                           {t("training.benefitsTitle")}
                         </h4>
                         <ul className="space-y-2">
                           {training.benefits.map((benefit, idx) => (
                             <li
                               key={idx}
-                              className="flex items-center gap-2 text-sm text-foreground/80 dark:text-foreground/90"
+                              className="flex items-center gap-2 text-sm text-foreground/80"
                             >
-                              <div className="w-1.5 h-1.5 bg-contraste dark:bg-contraste rounded-full border border-gray-800 dark:border-gray-200" />
+                              <div className="w-1.5 h-1.5 bg-contraste rounded-full border border-gray-800 dark:border-gray-200" />
                               {benefit}
                             </li>
                           ))}
@@ -182,14 +191,25 @@ export default function Training() {
                       </div>
                     </div>
 
+                    {/* Botão padronizado */}
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3 px-4 bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white font-semibold rounded-xl hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-gray-800 dark:border-gray-200"
+                      className="w-full py-3 px-4 min-h-[56px] 
+                      bg-gradient-to-r from-secondary to-contraste 
+                      dark:from-secondary dark:to-contraste 
+                      hover:from-secondary/90 hover:to-contraste/90 
+                      dark:hover:opacity-90 
+                      text-white font-semibold rounded-xl 
+                      hover:shadow-lg dark:hover:shadow-xl 
+                      transition-all duration-300 
+                      flex items-center justify-center gap-2 group/btn 
+                      border border-gray-800 dark:border-gray-200"
                     >
                       {t("training.requestQuote")}
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                     </motion.button>
+
                   </CardContent>
                 </Card>
               </motion.div>
@@ -209,24 +229,46 @@ export default function Training() {
             <h3 className="text-2xl font-bold text-foreground mb-4">
               {t("training.ctaTitle")}
             </h3>
+
             <p className="text-foreground/80 dark:text-foreground/90 mb-6 max-w-2xl mx-auto">
               {t("training.ctaDesc")}
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+              {/* CTA Button 1 */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-secondary to-contraste dark:from-secondary dark:to-contraste hover:from-secondary/90 hover:to-contraste/90 dark:hover:opacity-90 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 border border-gray-800 dark:border-gray-200"
+                className="min-h-[56px] 
+                px-8 py-4 
+                bg-gradient-to-r from-secondary to-contraste 
+                dark:from-secondary dark:to-contraste 
+                hover:from-secondary/90 hover:to-contraste/90 
+                dark:hover:opacity-90 
+                text-white font-semibold rounded-xl 
+                hover:shadow-lg dark:hover:shadow-xl 
+                transition-all duration-300 
+                border border-gray-800 dark:border-gray-200"
               >
                 {t("training.ctaButton1")}
               </motion.button>
+
+              {/* CTA Button 2 */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-secondary dark:border-secondary text-secondary dark:text-secondary px-8 py-4 rounded-xl font-semibold hover:bg-secondary/5 dark:hover:bg-secondary/10 transition-all duration-300 border-gray-800 dark:border-gray-200"
+                className="min-h-[56px] 
+                px-8 py-4 
+                border-2 border-secondary dark:border-secondary 
+                text-secondary dark:text-secondary 
+                rounded-xl font-semibold 
+                hover:bg-secondary/5 dark:hover:bg-secondary/10 
+                transition-all duration-300"
               >
                 {t("training.ctaButton2")}
               </motion.button>
+
             </div>
           </div>
         </motion.div>
