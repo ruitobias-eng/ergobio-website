@@ -110,7 +110,7 @@ export const LanguageProvider = ({ children }) => {
           ],
           aprTitle: "Avaliação Ergonômica Preliminar (AEP)",
           aprDesc:
-            "A APR é uma ferramenta essencial para a identificação rápida e inicial de riscos ergonômicos.",
+            "A AEP é uma ferramenta essencial para a identificação rápida e inicial de riscos ergonômicos.",
           aprFeat: [
             "Identificação de riscos",
             "Priorização de ações",
